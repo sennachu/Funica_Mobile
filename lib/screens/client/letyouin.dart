@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:funica_mobile/screens/client/login.dart';
 import 'package:funica_mobile/screens/client/register.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 void main() {
@@ -16,9 +17,9 @@ class LetinScreen extends StatelessWidget {
         appBar: AppBar(
           leading: IconButton(
             icon: Icon(Icons.arrow_back),
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
+             onPressed: () {
+              GoRouter.of(context).go("/boarding");
+          },
           ),
         ),
         body: SingleChildScrollView(
@@ -30,8 +31,8 @@ class LetinScreen extends StatelessWidget {
                 // Header image
                 Image.asset(
                   'assets/images/up-gk.png',
-                  height: 250,
-                  width: 250,
+                  height: 200,
+                  width: 200,
                 ),
                 Text(
                   "Let's you in",
@@ -46,7 +47,7 @@ class LetinScreen extends StatelessWidget {
                     // Add your Facebook login logic here
                   },
                   child: Container(
-                    height: 60,
+                    height: 50,
                     padding: EdgeInsets.symmetric(vertical: 10),
                     decoration: BoxDecoration(
                       color: Colors.white,
@@ -77,7 +78,7 @@ class LetinScreen extends StatelessWidget {
                     // Add your Google login logic here
                   },
                   child: Container(
-                    height: 60,
+                    height: 50,
                     padding: EdgeInsets.symmetric(vertical: 10),
                     decoration: BoxDecoration(
                       color: Colors.white,
@@ -108,7 +109,7 @@ class LetinScreen extends StatelessWidget {
                     // Add your Apple login logic here
                   },
                   child: Container(
-                    height: 60,
+                    height: 50,
                     padding: EdgeInsets.symmetric(vertical: 10),
                     decoration: BoxDecoration(
                       color: Colors.white,

@@ -13,7 +13,8 @@ class Storage {
       await storage.setInt("launchCount", 1);
       return true;
     } else {
-      await storage.setInt("lounchCount", counter! + 1);
+       counter ??= 0;
+      await storage.setInt("launchCount", counter! + 1);
       return false;
     }
   }

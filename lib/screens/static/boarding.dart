@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -239,7 +237,7 @@ class _BoardingScreenState extends State<BoardingScreen> {
         onTap: () async {
           final storage = Storage();
           await storage.firstLaunched();
-          GoRouter.of(context).replace("/home");
+          GoRouter.of(context).replace("/letin");
         },
         child: Container(
           width: 280,

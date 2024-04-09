@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:funica_mobile/screens/client/login.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 void main() {
@@ -37,7 +38,7 @@ class _RegisterPageState extends State<RegisterPage> {
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
-            Navigator.of(context).pop();
+              GoRouter.of(context).go("/letin");
           },
         ),
       ),
@@ -49,8 +50,8 @@ class _RegisterPageState extends State<RegisterPage> {
             Center(
               child: Image.asset(
                 'assets/images/logo.png',
-                height: 200,
-                width: 200,
+                height: 100,
+                width: 100,
               ),
             ),
             SizedBox(height: 20),
@@ -66,7 +67,7 @@ class _RegisterPageState extends State<RegisterPage> {
             Container(
               decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(25),
                 boxShadow: [
                   BoxShadow(
                     color: Colors.grey.withOpacity(0.1),
@@ -91,7 +92,7 @@ class _RegisterPageState extends State<RegisterPage> {
             Container(
               decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(25),
                 boxShadow: [
                   BoxShadow(
                     color: Colors.grey.withOpacity(0.1),
@@ -114,7 +115,7 @@ class _RegisterPageState extends State<RegisterPage> {
             Container(
               decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(25),
                 boxShadow: [
                   BoxShadow(
                     color: Colors.grey.withOpacity(0.1),
@@ -151,7 +152,7 @@ class _RegisterPageState extends State<RegisterPage> {
             SizedBox(height: 20),
             InkWell(
               onTap: () {
-                // Add your sign in with password logic here
+                GoRouter.of(context).go('/home');
               },
               child: Container(
                 height: 50,
