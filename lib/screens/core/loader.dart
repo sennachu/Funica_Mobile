@@ -23,7 +23,7 @@ class _LoaderScreenState extends State<LoaderScreen> {
     } else {
       //ana ekrana git
       //navigate to home screen
-      GoRouter.of(context).replace("/home");
+      GoRouter.of(context).replace("/letin");
     }
   }
 

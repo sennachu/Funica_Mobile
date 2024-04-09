@@ -1,4 +1,4 @@
-
+import 'package:funica_mobile/screens/client/letyouin.dart';
 import 'package:go_router/go_router.dart';
 
 import '../screens/client/login.dart';
@@ -31,11 +31,15 @@ final routes = GoRouter(
     ),
     GoRoute(
       path: '/login',
-      builder: (context, state) => const LoginScreen(),
+      builder: (context, state) => LoginScreen(),
+    ),
+    GoRoute(
+      path: '/letin',
+      builder: (context, state) => LetinScreen(),
     ),
     GoRoute(
       path: '/register',
-      builder: (context, state) => const RegisterScreen(),
+      builder: (context, state) => RegisterScreen(),
     ),
     GoRoute(
       path: '/profile',
