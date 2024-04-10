@@ -24,6 +24,7 @@ class RegisterPage extends StatefulWidget {
 
 class _RegisterPageState extends State<RegisterPage> {
   bool _isObscured = true;
+  bool _rememberMe = false;
 
   void _toggleVisibility() {
     setState(() {
@@ -38,7 +39,7 @@ class _RegisterPageState extends State<RegisterPage> {
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
-              GoRouter.of(context).go("/letin");
+            GoRouter.of(context).go("/letin");
           },
         ),
       ),
@@ -145,7 +146,15 @@ class _RegisterPageState extends State<RegisterPage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Checkbox(value: false, onChanged: (value) {}),
+                Checkbox(
+                  value: _rememberMe,
+                  onChanged: (value) {
+                    setState(() {
+                      _rememberMe = value!;
+                    });
+                  },
+                  activeColor: Colors.black,
+                ),
                 Text('Remember me', style: GoogleFonts.poppins()),
               ],
             ),

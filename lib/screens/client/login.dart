@@ -41,6 +41,26 @@ class _LoginPageState extends State<LoginPage> {
     _loadSavedCredentials();
   }
 
+  void _showPopup(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("Contact Us!"),
+          content: Text("You can contact us to reset your password."),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(); // Pop-up'ı kapat
+              },
+              child: Text("Okay"),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   void _loadSavedCredentials() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
@@ -250,7 +270,7 @@ class _LoginPageState extends State<LoginPage> {
             ),
             InkWell(
               onTap: () {
-                // Add your sign in with password logic here
+                _showPopup(context); // Pop-up gösterme fonksiyonunu çağır
               },
               child: Container(
                 height: 50,
