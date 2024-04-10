@@ -14,7 +14,7 @@ class Storage {
       return true;
     } else {
        counter ??= 0;
-      await storage.setInt("launchCount", counter! + 1);
+      await storage.setInt("launchCount", counter + 1);
       return false;
     }
   }

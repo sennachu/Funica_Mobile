@@ -1,7 +1,12 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:funica_mobile/core/utils.dart';
 import 'package:funica_mobile/screens/client/register.dart';
+import 'package:funica_mobile/screens/static/home.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:http/http.dart' as http;
 
 void main() {
   runApp(LoginScreen());
@@ -11,9 +16,11 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: LoginPage(),
-    );
+        debugShowCheckedModeBanner: false,
+        home: LoginPage(),
+        routes: {
+          '/home': (context) => HomeScreen(),
+        });
   }
 }
 
@@ -24,11 +31,48 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   bool _isObscured = true;
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+  bool _rememberMe = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadSavedCredentials();
+  }
+
+  void _loadSavedCredentials() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      _emailController.text = prefs.getString('username') ?? '';
+      _rememberMe = prefs.getBool('rememberMe') ?? false;
+      if (_rememberMe) {
+        _passwordController.text = prefs.getString('password') ?? '';
+      }
+    });
+  }
 
   void _toggleVisibility() {
     setState(() {
       _isObscured = !_isObscured;
     });
+  }
+
+  void _login() async {
+    // Add your authentication logic here
+    String email = _emailController.text;
+    String password = _passwordController.text;
+
+    // Save credentials if 'Remember me' is checked
+    if (_rememberMe) {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      await prefs.setString('username', email);
+      await prefs.setString('password', password);
+      await prefs.setBool('rememberMe', _rememberMe);
+    }
+
+    // Navigate to home screen or perform other actions after login
+    GoRouter.of(context).go('/home');
   }
 
   @override
@@ -38,7 +82,7 @@ class _LoginPageState extends State<LoginPage> {
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
-              GoRouter.of(context).go("/letin");
+            GoRouter.of(context).go("/letin");
           },
         ),
       ),
@@ -78,11 +122,13 @@ class _LoginPageState extends State<LoginPage> {
                 ],
               ),
               child: TextField(
+                controller: _emailController,
                 style: GoogleFonts.poppins(),
                 decoration: InputDecoration(
                   prefixIcon: Icon(Icons.email),
                   labelText: 'Email',
-                  border: InputBorder.none, // Remove the bottom border
+                  border: InputBorder.none,
+                  // Remove the bottom border
                 ),
               ),
             ),
@@ -101,6 +147,7 @@ class _LoginPageState extends State<LoginPage> {
                 ],
               ),
               child: TextField(
+                controller: _passwordController,
                 style: GoogleFonts.poppins(),
                 obscureText: _isObscured,
                 decoration: InputDecoration(
@@ -120,14 +167,57 @@ class _LoginPageState extends State<LoginPage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Checkbox(value: false, onChanged: (value) {}),
+                Checkbox(
+                  value: _rememberMe,
+                  onChanged: (value) {
+                    setState(() {
+                      _rememberMe = value!;
+                    });
+                  },
+                  activeColor: Colors.black,
+                ),
                 Text('Remember me', style: GoogleFonts.poppins()),
               ],
             ),
             SizedBox(height: 20),
             InkWell(
-              onTap: () {
-                GoRouter.of(context).go('/home');
+              onTap: () async {
+                if (_emailController.text.isNotEmpty &&
+                    _passwordController.text.isNotEmpty) {
+                  final url = Uri.parse('https://reqres.in/api/login');
+                  final headers = {'Content-Type': 'application/json'};
+                  final body = jsonEncode({
+                    'email': _emailController.text,
+                    'password': _passwordController.text
+                  });
+
+                  final response =
+                      await http.post(url, headers: headers, body: body);
+
+                  if (response.statusCode == 200) {
+                    print('Data Sending Success.');
+                    Navigator.pushNamedAndRemoveUntil(
+                        context, "/home", (Route<dynamic> route) => false);
+                  } else {
+                    print('Hata: ${response.body}');
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text('No such user exists!'),
+                      ),
+                    );
+                  }
+                  // Save credentials if 'Remember me' is checked
+                  if (_rememberMe) {
+                    SecureStorage()
+                        .writeSecureData("username", _emailController.text);
+                    SecureStorage()
+                        .writeSecureData("password", _passwordController.text);
+                    final SharedPreferences prefs =
+                        await SharedPreferences.getInstance();
+                    prefs.setString("username", _emailController.text);
+                    prefs.setString("password", _passwordController.text);
+                  }
+                }
               },
               child: Container(
                 height: 50,
@@ -147,7 +237,10 @@ class _LoginPageState extends State<LoginPage> {
                 child: Center(
                   child: Text(
                     'Sign in',
-                    style: GoogleFonts.poppins(color: Colors.white),
+                    style: TextStyle(
+                        fontFamily: 'poppins',
+                        color: Colors.white,
+                        fontSize: 15),
                   ),
                 ),
               ),
