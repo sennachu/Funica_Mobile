@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import '../../widgets/bottomNavigation.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -71,6 +72,15 @@ class _HomeScreenState extends State<HomeScreen> {
               
             ),
           ),
+          Container(
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: Color.fromARGB(9, 137, 137, 137),
+                ),
+              ),
+              
+            ),
+           BottomNavigator(selectedIndex: 0),
         ],
       ),
       

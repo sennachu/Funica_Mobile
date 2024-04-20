@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 import '../../widgets/bottomNavigation.dart';
 
-
-class ProfileScreen extends StatefulWidget {
-  const ProfileScreen({super.key});
+class WalletScreen extends StatefulWidget {
+  const WalletScreen({super.key});
 
   @override
-  State<ProfileScreen> createState() => _ProfileScreenState();
+  State<WalletScreen> createState() => _WalletScreenState();
 }
 
-class _ProfileScreenState extends State<ProfileScreen> {
+class _WalletScreenState extends State<WalletScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return  Scaffold(
       body: Column(
         children: [
           Expanded(
@@ -22,7 +21,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   color: Color.fromARGB(9, 137, 137, 137),
                 ),
               ),
-              child: Center(child: Text("profile")),
+              child: Center(child: Text("wallet")),
             ),
             
           ),
@@ -34,7 +33,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
               
             ),
-           BottomNavigator(selectedIndex: 4),
+           BottomNavigator(selectedIndex: 3),
         ],
       ),
     );

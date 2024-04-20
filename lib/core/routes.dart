@@ -10,8 +10,11 @@ import '../screens/product/product.dart';
 import '../screens/product/search.dart';
 import '../screens/static/about.dart';
 import '../screens/static/boarding.dart';
+import '../screens/static/cart.dart';
 import '../screens/static/contact.dart';
 import '../screens/static/home.dart';
+import '../screens/static/orders.dart';
+import '../screens/static/wallet.dart';
 
 // GoRouter configuration
 final routes = GoRouter(
@@ -60,6 +63,18 @@ final routes = GoRouter(
     GoRoute(
       path: '/search',
       builder: (context, state) => const SearchScreen(),
+    ),
+    GoRoute(
+      path: '/cart',
+      builder: (context, state) => const CartScreen(),
+    ),
+    GoRoute(
+      path: '/orders',
+      builder: (context, state) => const OrdersScreen(),
+    ),
+    GoRoute(
+      path: '/wallet',
+      builder: (context, state) => const WalletScreen(),
     ),
   ],
 );
