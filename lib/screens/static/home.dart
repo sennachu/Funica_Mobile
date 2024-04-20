@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:gap/gap.dart';
 
-import '../../widgets/bottomNavigation.dart'; 
+import '../../widgets/bottomNavigation.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -13,7 +13,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final List<String> images = [
-    'assets/images/slider1.png', 
+    'assets/images/slider1.png',
     'assets/images/slider2.png',
     'assets/images/slider3.png',
     'assets/images/slider4.png',
@@ -91,7 +91,10 @@ class _HomeScreenState extends State<HomeScreen> {
                   hintStyle: TextStyle(color: Colors.black26),
                   prefixIcon: Icon(Icons.search),
                   prefixIconColor: Colors.black26,
-                  suffixIcon: Icon(Icons.tune, size: 20,),
+                  suffixIcon: Icon(
+                    Icons.tune,
+                    size: 20,
+                  ),
                 ),
               ),
             ),
@@ -118,12 +121,15 @@ class _HomeScreenState extends State<HomeScreen> {
               CarouselSlider.builder(
                 itemCount: images.length,
                 itemBuilder: (BuildContext context, int index, int realIndex) {
-                  return Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20.0),
-                      image: DecorationImage(
-                        image: AssetImage(images[index]),
-                        fit: BoxFit.cover,
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20.0),
+                        image: DecorationImage(
+                          image: AssetImage(images[index]),
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
                   );
@@ -159,10 +165,13 @@ class _HomeScreenState extends State<HomeScreen> {
                     return Container(
                       width: 3.0,
                       height: 3.0,
-                      margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
+                      margin:
+                          EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        color: _currentImageIndex == index ? Colors.black : Colors.grey, 
+                        color: _currentImageIndex == index
+                            ? Colors.black
+                            : Colors.grey,
                       ),
                     );
                   }).toList(),

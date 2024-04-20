@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../../core/storage.dart';
 
-  class BottomNavigator extends StatelessWidget {
+class BottomNavigator extends StatelessWidget {
   final int selectedIndex;
 
   const BottomNavigator({
@@ -10,42 +10,36 @@ import '../../core/storage.dart';
     required this.selectedIndex,
   }) : super(key: key);
 
-
   @override
-Widget build(BuildContext context) {
-  return Padding(
-    padding: const EdgeInsets.all(13.0),
-    child: Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        // Tüm ikonları oluştur
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            for (var i = 0; i < 5; i++)
-              AltMenuItem(
-                icon: Icon(
-                  _getIconData(i),
-                  size: 20,
-                  color: _getIconColor(i, selectedIndex),
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(13.0),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              for (var i = 0; i < 5; i++)
+                AltMenuItem(
+                  icon: Icon(
+                    _getIconData(i),
+                    size: 20,
+                    color: _getIconColor(i, selectedIndex),
+                  ),
+                  onTap: () {
+                    final routeName = _getRouteName(i);
+                    GoRouter.of(context).go(routeName);
+                  },
+                  isActive: i == selectedIndex,
+                  label: _getLabelText(i),
                 ),
-                onTap: () async {
-                  final storage = Storage();
-                  await storage.firstLaunched();
-                  GoRouter.of(context).replace(_getRouteName(i));
-                },
-                isActive: i == selectedIndex,
-                label: _getLabelText(i),
-              ),
-          ],
-        ),
-        // Tüm metinleri oluştur
-        
-      ],
-    ),
-  );
-}
-
+            ],
+          ),
+        ],
+      ),
+    );
+  }
 
   IconData _getIconData(int index) {
     switch (index) {
@@ -65,7 +59,9 @@ Widget build(BuildContext context) {
   }
 
   Color _getIconColor(int index, int selectedIndex) {
-    return index == selectedIndex ? Colors.black : Color.fromARGB(95, 138, 138, 138);
+    return index == selectedIndex
+        ? Colors.black
+        : Color.fromARGB(95, 138, 138, 138);
   }
 
   String _getLabelText(int index) {
@@ -135,7 +131,8 @@ class AltMenuItem extends StatelessWidget {
               label,
               style: TextStyle(
                 fontSize: 10,
-                color: isActive ? Colors.black : Color.fromARGB(95, 138, 138, 138),
+                color:
+                    isActive ? Colors.black : Color.fromARGB(95, 138, 138, 138),
               ),
             ),
           ],

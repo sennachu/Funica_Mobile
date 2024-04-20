@@ -205,9 +205,7 @@ class _RegisterPageState extends State<RegisterPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 InkWell(
-                  onTap: () {
-                    // Add your sign in with password logic here
-                  },
+                  onTap: () {},
                   child: Container(
                     height: 45,
                     padding: EdgeInsets.symmetric(horizontal: 25),
@@ -233,9 +231,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
                 SizedBox(width: 10),
                 InkWell(
-                  onTap: () {
-                    // Add your sign in with password logic here
-                  },
+                  onTap: () {},
                   child: Container(
                     height: 45,
                     padding: EdgeInsets.symmetric(horizontal: 25),
@@ -261,9 +257,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
                 SizedBox(width: 10),
                 InkWell(
-                  onTap: () {
-                    // Add your sign in with password logic here
-                  },
+                  onTap: () {},
                   child: Container(
                     height: 45,
                     padding: EdgeInsets.symmetric(horizontal: 25),
