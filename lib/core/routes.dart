@@ -8,10 +8,10 @@ import '../screens/core/error.dart';
 import '../screens/core/loader.dart';
 import '../screens/product/product.dart';
 import '../screens/product/search.dart';
-import '../screens/static/about.dart';
+// import '../screens/static/about.dart';
 import '../screens/static/boarding.dart';
 import '../screens/static/cart.dart';
-import '../screens/static/contact.dart';
+// import '../screens/static/contact.dart';
 import '../screens/static/home.dart';
 import '../screens/static/orders.dart';
 import '../screens/static/wallet.dart';
@@ -48,14 +48,14 @@ final routes = GoRouter(
       path: '/profile',
       builder: (context, state) => const ProfileScreen(),
     ),
-    GoRoute(
-      path: '/about',
-      builder: (context, state) => const AboutScreen(),
-    ),
-    GoRoute(
-      path: '/contact',
-      builder: (context, state) => const ContactScreen(),
-    ),
+    // GoRoute(
+    //   path: '/about',
+    //   builder: (context, state) => const AboutScreen(),
+    // ),
+    // GoRoute(
+    //   path: '/contact',
+    //   builder: (context, state) => const ContactScreen(),
+    // ),
     GoRoute(
       path: '/product',
       builder: (context, state) => const ProductScreen(),
