@@ -1,4 +1,5 @@
 import 'package:funica_mobile/screens/client/letyouin.dart';
+import 'package:funica_mobile/screens/product/chair.dart';
 import 'package:go_router/go_router.dart';
 
 import '../screens/client/login.dart';
@@ -6,9 +7,16 @@ import '../screens/client/profile.dart';
 import '../screens/client/register.dart';
 import '../screens/core/error.dart';
 import '../screens/core/loader.dart';
+import '../screens/product/cupboard.dart';
+import '../screens/product/kitchen.dart';
+import '../screens/product/lamp.dart';
+import '../screens/product/others.dart';
 import '../screens/product/product.dart';
 import '../screens/product/search.dart';
 // import '../screens/static/about.dart';
+import '../screens/product/sofa.dart';
+import '../screens/product/table.dart';
+import '../screens/product/vase.dart';
 import '../screens/static/boarding.dart';
 import '../screens/static/cart.dart';
 // import '../screens/static/contact.dart';
@@ -76,5 +84,38 @@ final routes = GoRouter(
       path: '/wallet',
       builder: (context, state) => const WalletScreen(),
     ),
+    GoRoute(
+      path: '/sofa',
+      builder: (context, state) => const SofaScreen(),
+    ),
+    GoRoute(
+      path: '/chair',
+      builder: (context, state) => const ChairScreen(),
+    ),
+    GoRoute(
+      path: '/table',
+      builder: (context, state) => const TableScreen(),
+    ),
+    GoRoute(
+      path: '/kitchen',
+      builder: (context, state) => const KitchenScreen(),
+    ),
+    GoRoute(
+      path: '/lamp',
+      builder: (context, state) => const LampScreen(),
+    ),
+    GoRoute(
+      path: '/cupboard',
+      builder: (context, state) => const CupboardScreen(),
+    ),
+    GoRoute(
+      path: '/vase',
+      builder: (context, state) => const VaseScreen(),
+    ),
+    GoRoute(
+      path: '/others',
+      builder: (context, state) => const OthersScreen(),
+    ),
+
   ],
 );

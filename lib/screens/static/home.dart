@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../widgets/bottomNavigation.dart';
 
@@ -177,8 +178,129 @@ class _HomeScreenState extends State<HomeScreen> {
                   }).toList(),
                 ),
               ),
-            ],
-          ),
+              ],
+            ),
+            Gap(15),
+          Padding(
+            padding: const EdgeInsets.all(22.0),
+            child: GestureDetector(
+              onTap: () {
+                GoRouter.of(context).go('/sofa');
+              },
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                  Column(
+                    children: [
+                      CircleAvatar(
+                        radius: 28,
+                        backgroundColor: Color.fromARGB(255, 244, 243, 243),
+                        child: Icon(Icons.chair,color: Colors.black,),
+                        ),
+                        Gap(3),
+                      Text("Sofa",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 11),),
+                    ],
+                  ),
+                  Gap(35),
+                  GestureDetector(
+                        onTap: () {
+                    GoRouter.of(context).go('/chair');
+                  },
+                    child: Column(
+                      children: [
+                        CircleAvatar(
+                          radius: 30,
+                          backgroundColor: Color.fromARGB(255, 244, 243, 243),
+                          child: Icon(Icons.chair_alt, color: Colors.black,),
+                        ),
+                        Gap(3),
+                        Text("Chair",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 11),),
+                      ],
+                    ),
+                  ),
+                  Gap(35),
+                  Column(
+                    children: [
+                      CircleAvatar(
+                        radius: 30,
+                        backgroundColor: Color.fromARGB(255, 244, 243, 243),
+                        child: Icon(Icons.table_bar,color: Colors.black,),
+                      ),
+                      Gap(3),
+                      Text("Table",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 11),),
+                    ],
+                  ),
+                  Gap(35),
+                  Column(
+                    children: [
+                      CircleAvatar(
+                        radius: 30,
+                        backgroundColor: Color.fromARGB(255, 244, 243, 243),
+                        child: Icon(Icons.kitchen, color: Colors.black,),
+                      ),
+                      Gap(3),
+                      Text("Kitchen",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 11),),
+                    ],
+                  ),
+                    ],
+                  ),
+                  Gap(20),
+                  Row(
+                    children: [
+                  Column(
+                    children: [
+                      CircleAvatar(
+                        radius: 30,
+                        backgroundColor: Color.fromARGB(255, 244, 243, 243),
+                        child: Icon(Icons.light, color: Colors.black,),
+                      ),
+                      Gap(3),
+                      Text("Lamp",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 11),),
+                    ],
+                  ),
+                  Gap(35),
+                  Column(
+                    children: [
+                      CircleAvatar(
+                        radius: 30,
+                        backgroundColor: Color.fromARGB(255, 244, 243, 243),
+                        child: Icon(Icons.shelves, color: Colors.black,),
+                      ),
+                      Gap(3),
+                      Text("Cupboard",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 11),),
+                    ],
+                  ),
+                  Gap(35),
+                  Column(
+                    children: [
+                      CircleAvatar(
+                        radius: 30,
+                        backgroundColor: Color.fromARGB(255, 244, 243, 243),
+                        child: Icon(Icons.local_florist, color: Colors.black,),
+                      ),
+                      Gap(3),
+                      Text("Vase",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 11),),
+                    ],
+                  ),
+                  Gap(35),
+                  Column(
+                    children: [
+                      CircleAvatar(
+                        radius: 30,
+                        backgroundColor: Color.fromARGB(255, 244, 243, 243),
+                        child: Icon(Icons.pending, color: Colors.black,),
+                      ),
+                      Gap(3),
+                      Text("Others",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 11),),
+                    ],
+                  ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          )
         ],
       ),
       bottomNavigationBar: BottomNavigator(selectedIndex: 0),
