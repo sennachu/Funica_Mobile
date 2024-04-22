@@ -17,6 +17,15 @@ import '../screens/product/search.dart';
 import '../screens/product/sofa.dart';
 import '../screens/product/table.dart';
 import '../screens/product/vase.dart';
+import '../screens/profile_sec/adress.dart';
+import '../screens/profile_sec/edit_profile.dart';
+import '../screens/profile_sec/help.dart';
+import '../screens/profile_sec/inv_friends.dart';
+import '../screens/profile_sec/language.dart';
+import '../screens/profile_sec/notification.dart';
+import '../screens/profile_sec/payment.dart';
+import '../screens/profile_sec/privacy.dart';
+import '../screens/profile_sec/security.dart';
 import '../screens/static/boarding.dart';
 import '../screens/static/cart.dart';
 // import '../screens/static/contact.dart';
@@ -115,6 +124,46 @@ final routes = GoRouter(
     GoRoute(
       path: '/others',
       builder: (context, state) => const OthersScreen(),
+    ),
+     GoRoute(
+      path: '/edit',
+      builder: (context, state) => const EditProfileScreen(),
+    ),
+    GoRoute(
+      path: '/address',
+      builder: (context, state) => const AddressScreen(),
+    ),
+     GoRoute(
+      path: '/notification',
+      builder: (context, state) => const NotificationScreen(),
+    ),
+     GoRoute(
+      path: '/payment',
+      builder: (context, state) => const PaymentScreen(),
+    ),
+     GoRoute(
+      path: '/security',
+      builder: (context, state) => const SecurityScreen(),
+    ),
+     GoRoute(
+      path: '/language',
+      builder: (context, state) => const LanguageScreen(),
+    ),
+     GoRoute(
+      path: '/privacy',
+      builder: (context, state) => const PrivacyScreen(),
+    ),
+     GoRoute(
+      path: '/help',
+      builder: (context, state) => const HelpScreen(),
+    ),
+     GoRoute(
+      path: '/others',
+      builder: (context, state) => const OthersScreen(),
+    ),
+     GoRoute(
+      path: '/invite',
+      builder: (context, state) => const InviteScreen(),
     ),
 
   ],

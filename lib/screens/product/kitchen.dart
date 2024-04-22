@@ -19,7 +19,7 @@ class _KitchenScreenState extends State<KitchenScreen> {
             GoRouter.of(context).go('/home');
           },
         ),
-        title: Text("kitchn"),
+        title: Text("kitchen"),
       ),
       body: Center(
         child: Text("kitchen"),

@@ -220,82 +220,112 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                   Gap(35),
-                  Column(
-                    children: [
-                      CircleAvatar(
-                        radius: 30,
-                        backgroundColor: Color.fromARGB(255, 244, 243, 243),
-                        child: Icon(Icons.table_bar,color: Colors.black,),
-                      ),
-                      Gap(3),
-                      Text("Table",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 11),),
-                    ],
+                  GestureDetector(
+                        onTap: () {
+                    GoRouter.of(context).go('/table');
+                  },
+                    child: Column(
+                      children: [
+                        CircleAvatar(
+                          radius: 30,
+                          backgroundColor: Color.fromARGB(255, 244, 243, 243),
+                          child: Icon(Icons.table_bar, color: Colors.black,),
+                        ),
+                        Gap(3),
+                        Text("Table",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 11),),
+                      ],
+                    ),
                   ),
                   Gap(35),
-                  Column(
-                    children: [
-                      CircleAvatar(
-                        radius: 30,
-                        backgroundColor: Color.fromARGB(255, 244, 243, 243),
-                        child: Icon(Icons.kitchen, color: Colors.black,),
-                      ),
-                      Gap(3),
-                      Text("Kitchen",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 11),),
-                    ],
+                  GestureDetector(
+                        onTap: () {
+                    GoRouter.of(context).go('/kitchen');
+                  },
+                    child: Column(
+                      children: [
+                        CircleAvatar(
+                          radius: 30,
+                          backgroundColor: Color.fromARGB(255, 244, 243, 243),
+                          child: Icon(Icons.kitchen, color: Colors.black,),
+                        ),
+                        Gap(3),
+                        Text("Kitchen",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 11),),
+                      ],
+                    ),
                   ),
-                    ],
+                  ],
                   ),
                   Gap(20),
                   Row(
                     children: [
-                  Column(
-                    children: [
-                      CircleAvatar(
-                        radius: 30,
-                        backgroundColor: Color.fromARGB(255, 244, 243, 243),
-                        child: Icon(Icons.light, color: Colors.black,),
-                      ),
-                      Gap(3),
-                      Text("Lamp",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 11),),
-                    ],
+                      GestureDetector(
+                        onTap: () {
+                    GoRouter.of(context).go('/lamp');
+                  },
+                    child: Column(
+                      children: [
+                        CircleAvatar(
+                          radius: 30,
+                          backgroundColor: Color.fromARGB(255, 244, 243, 243),
+                          child: Icon(Icons.light, color: Colors.black,),
+                        ),
+                        Gap(3),
+                        Text("Lamp",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 11),),
+                      ],
+                    ),
                   ),
                   Gap(35),
-                  Column(
-                    children: [
-                      CircleAvatar(
-                        radius: 30,
-                        backgroundColor: Color.fromARGB(255, 244, 243, 243),
-                        child: Icon(Icons.shelves, color: Colors.black,),
-                      ),
-                      Gap(3),
-                      Text("Cupboard",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 11),),
-                    ],
+                  GestureDetector(
+                        onTap: () {
+                    GoRouter.of(context).go('/cupboard');
+                  },
+                    child: Column(
+                      children: [
+                        CircleAvatar(
+                          radius: 30,
+                          backgroundColor: Color.fromARGB(255, 244, 243, 243),
+                          child: Icon(Icons.shelves, color: Colors.black,),
+                        ),
+                        Gap(3),
+                        Text("Cupboard",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 11),),
+                      ],
+                    ),
                   ),
                   Gap(35),
-                  Column(
-                    children: [
-                      CircleAvatar(
-                        radius: 30,
-                        backgroundColor: Color.fromARGB(255, 244, 243, 243),
-                        child: Icon(Icons.local_florist, color: Colors.black,),
-                      ),
-                      Gap(3),
-                      Text("Vase",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 11),),
-                    ],
+                  GestureDetector(
+                        onTap: () {
+                    GoRouter.of(context).go('/vase');
+                  },
+                    child: Column(
+                      children: [
+                        CircleAvatar(
+                          radius: 30,
+                          backgroundColor: Color.fromARGB(255, 244, 243, 243),
+                          child: Icon(Icons.local_florist_outlined, color: Colors.black,),
+                        ),
+                        Gap(3),
+                        Text("Vase",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 11),),
+                      ],
+                    ),
                   ),
                   Gap(35),
-                  Column(
-                    children: [
-                      CircleAvatar(
-                        radius: 30,
-                        backgroundColor: Color.fromARGB(255, 244, 243, 243),
-                        child: Icon(Icons.pending, color: Colors.black,),
-                      ),
-                      Gap(3),
-                      Text("Others",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 11),),
-                    ],
+                  GestureDetector(
+                        onTap: () {
+                    GoRouter.of(context).go('/others');
+                  },
+                    child: Column(
+                      children: [
+                        CircleAvatar(
+                          radius: 30,
+                          backgroundColor: Color.fromARGB(255, 244, 243, 243),
+                          child: Icon(Icons.pending_outlined, color: Colors.black,),
+                        ),
+                        Gap(3),
+                        Text("Others",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 11),),
+                      ],
+                    ),
                   ),
-                    ],
+                  ],
                   ),
                 ],
               ),

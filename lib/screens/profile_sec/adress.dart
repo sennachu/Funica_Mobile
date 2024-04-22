@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:funica_mobile/widgets/bottomNavigation.dart';
 import 'package:go_router/go_router.dart';
 
-class AddressScren extends StatefulWidget {
-  const AddressScren({super.key});
+class AddressScreen extends StatefulWidget {
+  const AddressScreen({super.key});
 
   @override
-  State<AddressScren> createState() => _AddressScrenState();
+  State<AddressScreen> createState() => _AddressScreenState();
 }
 
-class _AddressScrenState extends State<AddressScren> {
+class _AddressScreenState extends State<AddressScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

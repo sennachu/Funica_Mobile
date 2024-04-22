@@ -20,7 +20,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
             GoRouter.of(context).go('/profile');
           },
         ),
-        title: Text("Edit Profile"),
+        title: Text("Edit Profile Screen"),
       ),
       body: Column(
         children: [
