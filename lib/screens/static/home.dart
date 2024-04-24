@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:funica_mobile/model/home_products_model.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
-
+import 'package:funica_mobile/model/product_provider.dart';
+import 'package:grock/grock.dart';
+import '../../model/product_card.dart';
 import '../../widgets/bottomNavigation.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -24,13 +27,17 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final HomeProductsModel model = HomeProductsModel(
+        categoryTitle: "Most Popular", products: mostPopular.products);
     return Scaffold(
+      extendBodyBehindAppBar: true,
+      backgroundColor: Colors.white,
       appBar: AppBar(
+        backgroundColor: Colors.white,
         leading: Padding(
           padding: const EdgeInsets.only(left: 16.0),
           child: CircleAvatar(
-            backgroundColor: Colors.grey[300],
-            child: Icon(Icons.person),
+            backgroundImage: AssetImage("assets/images/kadin1.jpeg"),
           ),
         ),
         title: Column(
@@ -52,7 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             SizedBox(height: 5),
             Text(
-              'Kullanıcı Adı',
+              'Eva Holt',
               style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
             ),
           ],
@@ -417,35 +424,52 @@ class _HomeScreenState extends State<HomeScreen> {
             Gap(10),
             productsContainer(context),
             Gap(15),
-            Row(
-               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                homeProductsDetails(photo: "assets/images/chair2.png",name: "Padded Chair",icon: Icon(Icons.star_half),puan: "4.5", tire: "|", sold: "8.456 sold",price: "\$120",),
-                homeProductsDetails(photo: "assets/images/cup1.png",name: "Small Bookcase",icon: Icon(Icons.star_half),puan: "4.7", tire: "|", sold: "6.238 sold",price: "\$145",),
-              ],
-            ),
-            Gap(15),
-             Row(
-               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                homeProductsDetails(photo: "assets/images/lamp1.png",name: "Glass Lamp",icon: Icon(Icons.star_half),puan: "4.3", tire: "|", sold: "5.156 sold",price: "\$40",),
-                homeProductsDetails(photo: "assets/images/kitchen1.png",name: "Glass Packge",icon: Icon(Icons.star_half),puan: "4.9", tire: "|", sold: "4.968 sold",price: "\$55",),
-              ],
-            ),
-            Gap(15),
-             Row(
-               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                homeProductsDetails(photo: "assets/images/chair1.png",name: "Plastic Chair",icon: Icon(Icons.star_half),puan: "4.6", tire: "|", sold: "3.678 sold",price: "\$40",),
-                homeProductsDetails(photo: "assets/images/chair3.png",name: "Wooden Chair",icon: Icon(Icons.star_half),puan: "4.5", tire: "|", sold: "2.508 sold",price: "\$55",),
-              ],
-            ),
+            homeProductCategories(model),
           ],
         ),
       ),
       bottomNavigationBar: BottomNavigator(selectedIndex: 0),
     );
   }
+
+
+
+ Widget homeProductCategories(HomeProductsModel model) {
+  return Column(
+    children: List.generate(
+      (model.products.length / 2).ceil(),
+      (index) {
+        int startIndex = index * 2;
+        int endIndex = startIndex + 2;
+        if (endIndex > model.products.length) {
+          endIndex = model.products.length;
+        }
+        return Row(
+          children: List.generate(
+            endIndex - startIndex,
+            (i) {
+              return Expanded(
+                child: SizedBox(
+                  height: 250,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: ProductCard(
+                      product: model.products[startIndex + i],
+                    ),
+                  ),
+                ),
+              );
+            },
+          ),
+        );
+      },
+    ),
+  );
+}
+
+
+
+
 
   Padding productsContainer(BuildContext context) {
     return Padding(
@@ -657,91 +681,6 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
-    );
-  }
-}
-
-class homeProductsDetails extends StatelessWidget {
-  final String photo;
-  final String name;
-  final Icon icon;
-  final String price;
-  final String puan;
-  final String tire;
-  final String sold;
-
-  const homeProductsDetails({
-    required this.icon,
-    required this.photo,
-    required this.name,
-    required this.price,
-    required this.puan,
-    required this.tire,
-    required  this.sold,
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              width: 150,
-              height: 150,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
-                image: DecorationImage(
-                  image: AssetImage(photo),
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-            Gap(8),
-            Text(
-              name,
-              style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
-            ),
-            Row(
-              children: [
-                icon,
-                Gap(6),
-                Text(
-                  puan,
-                  style: TextStyle(color: Colors.black54, fontSize: 12),
-                ),
-                Gap(5),
-                Text(
-                  tire,
-                  style: TextStyle(color: Colors.black87),
-                ),
-                Gap(10),
-                Container(
-                  width: 55,
-                  height: 20,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5),
-                      color: Color.fromARGB(149, 232, 232, 232)),
-                  child: Center(
-                      child: Text(
-                    sold,
-                    style: TextStyle(fontSize: 8, fontWeight: FontWeight.bold),
-                  )),
-                )
-              ],
-            ),
-            Gap(3),
-            Text(
-              price,
-              style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
-            ),
-          ],
-        ),
-        
-      ],
     );
   }
 }
