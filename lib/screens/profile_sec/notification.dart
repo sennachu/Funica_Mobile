@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:funica_mobile/widgets/bottomNavigation.dart';
 import 'package:go_router/go_router.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class NotificationScreen extends StatefulWidget {
   const NotificationScreen({super.key});
@@ -20,30 +21,163 @@ class _NotificationScreenState extends State<NotificationScreen> {
             GoRouter.of(context).go('/profile');
           },
         ),
-        title: Text("Notification"),
+        title: Text(
+          "Notification",
+          style: GoogleFonts.poppins(),
+        ),
       ),
-      body: Column(
-        children: [
-          Expanded(
-            child: Container(
-              decoration: BoxDecoration(
-                border: Border.all(
-                  color: Color.fromARGB(9, 137, 137, 137),
-                ),
+      body: Expanded(
+        child: ListView(
+          children: [
+            ListTile(
+              title: Text(
+                "General Notification",
+                style: GoogleFonts.poppins(),
               ),
-              child: Center(child: Text("Notification")),
-            ),
-          ),
-          Container(
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: Color.fromARGB(9, 137, 137, 137),
+              trailing: Switch(
+                value: true,
+                activeColor: Colors.black,
+                onChanged: (value) {
+                  setState(() {
+                    // Handle switch state changes here
+                  });
+                },
               ),
             ),
-          ),
-          BottomNavigator(selectedIndex: 4),
-        ],
+            ListTile(
+              title: Text(
+                "Sound",
+                style: GoogleFonts.poppins(),
+              ),
+              trailing: Switch(
+                value: true,
+                activeColor: Colors.black,
+                onChanged: (value) {
+                  setState(() {
+                    // Handle switch state changes here
+                  });
+                },
+              ),
+            ),
+            ListTile(
+              title: Text(
+                "Vibrate",
+                style: GoogleFonts.poppins(),
+              ),
+              trailing: Switch(
+                value: false,
+                onChanged: (value) {
+                  setState(() {
+                    // Handle switch state changes here
+                  });
+                },
+              ),
+            ),
+            ListTile(
+              title: Text(
+                "Special Offers",
+                style: GoogleFonts.poppins(),
+              ),
+              trailing: Switch(
+                value: true,
+                activeColor: Colors.black,
+                onChanged: (value) {
+                  setState(() {
+                    // Handle switch state changes here
+                  });
+                },
+              ),
+            ),
+            ListTile(
+              title: Text(
+                "Promo & Discount",
+                style: GoogleFonts.poppins(),
+              ),
+              trailing: Switch(
+                value: false,
+                onChanged: (value) {
+                  setState(() {
+                    // Handle switch state changes here
+                  });
+                },
+              ),
+            ),
+            ListTile(
+              title: Text(
+                "Payments",
+                style: GoogleFonts.poppins(),
+              ),
+              trailing: Switch(
+                value: true,
+                activeColor: Colors.black,
+                onChanged: (value) {
+                  setState(() {
+                    // Handle switch state changes here
+                  });
+                },
+              ),
+            ),
+            ListTile(
+              title: Text(
+                "Cashback",
+                style: GoogleFonts.poppins(),
+              ),
+              trailing: Switch(
+                value: false,
+                onChanged: (value) {
+                  setState(() {
+                    // Handle switch state changes here
+                  });
+                },
+              ),
+            ),
+            ListTile(
+              title: Text(
+                "App Updates",
+                style: GoogleFonts.poppins(),
+              ),
+              trailing: Switch(
+                value: true,
+                activeColor: Colors.black,
+                onChanged: (value) {
+                  setState(() {
+                    // Handle switch state changes here
+                  });
+                },
+              ),
+            ),
+            ListTile(
+              title: Text(
+                "New Service Available",
+                style: GoogleFonts.poppins(),
+              ),
+              trailing: Switch(
+                value: false,
+                onChanged: (value) {
+                  setState(() {
+                    // Handle switch state changes here
+                  });
+                },
+              ),
+            ),
+            ListTile(
+              title: Text(
+                "New Tips Available",
+                style: GoogleFonts.poppins(),
+              ),
+              trailing: Switch(
+                value: false,
+                onChanged: (value) {
+                  setState(() {
+                    // Handle switch state changes here
+                  });
+                },
+              ),
+            ),
+          ],
+        ),
       ),
+      bottomNavigationBar: BottomNavigator(selectedIndex: 4),
     );
   }
 }
