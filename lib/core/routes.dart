@@ -21,7 +21,7 @@ import '../screens/product/vase.dart';
 import '../screens/profile_sec/adress.dart';
 import '../screens/profile_sec/edit_profile.dart';
 import '../screens/profile_sec/help.dart';
-import '../screens/profile_sec/inv_friends.dart';
+
 import '../screens/profile_sec/language.dart';
 import '../screens/profile_sec/notification.dart';
 import '../screens/profile_sec/payment.dart';
@@ -159,14 +159,5 @@ final routes = GoRouter(
       path: '/others',
       builder: (context, state) => const OthersScreen(),
     ),
-    GoRoute(
-      path: '/invite',
-      builder: (context, state) => const InviteScreen(),
-    ),
-    
-    
-
-    
-    
   ],
 );
