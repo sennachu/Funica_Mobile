@@ -71,7 +71,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   },
                 ),
               ),
-              SizedBox(height: 5.0),
+              SizedBox(height: 10),
               InkWell(
                 onTap: () {
                   // Handle tap
@@ -89,7 +89,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   },
                 ),
               ),
-              SizedBox(height: 5.0),
+              SizedBox(height: 15),
               GestureDetector(
                 onTap: () => _selectDate(context),
                 child: AbsorbPointer(
@@ -108,7 +108,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   ),
                 ),
               ),
-              SizedBox(height: 5.0),
+              SizedBox(height: 15),
               Row(
                 children: [
                   Expanded(
@@ -135,7 +135,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   ),
                 ],
               ),
-              SizedBox(height: 5.0),
+              SizedBox(height: 15),
               DropdownButtonFormField<String>(
                 value: _selectedCountry,
                 onChanged: (value) {
@@ -155,7 +155,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   labelStyle: GoogleFonts.poppins(),
                 ),
               ),
-              SizedBox(height: 5.0),
+              SizedBox(height: 15),
               Row(
                 children: [
                   DropdownButton<String>(
@@ -173,7 +173,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                 ))
                         .toList(),
                   ),
-                  SizedBox(width: 5.0),
+                  SizedBox(height: 15),
                   Expanded(
                     child: InkWell(
                       onTap: () {
@@ -195,7 +195,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   ),
                 ],
               ),
-              SizedBox(height: 5.0),
+              SizedBox(height: 15),
               DropdownButtonFormField<String>(
                 value: _selectedGender,
                 onChanged: (value) {
@@ -215,7 +215,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   labelStyle: GoogleFonts.poppins(),
                 ),
               ),
-              SizedBox(height: 37.0),
+              SizedBox(height: 10.0),
               Center(
                 child: InkWell(
                   onTap: () {
@@ -229,8 +229,14 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                       },
                       child: Text('Update'),
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.black,
-                        foregroundColor: Colors.white,
+                        backgroundColor:
+                            Theme.of(context).brightness == Brightness.dark
+                                ? Colors.white
+                                : Colors.black,
+                        foregroundColor:
+                            Theme.of(context).brightness == Brightness.dark
+                                ? Colors.black
+                                : Colors.white,
                         textStyle: GoogleFonts.poppins(color: Colors.black),
                         // Customize the button color here
                       ),

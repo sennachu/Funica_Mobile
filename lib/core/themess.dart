@@ -20,7 +20,7 @@ final lightTheme = FlexThemeData.light(
 );
 
 final darkTheme = FlexThemeData.dark(
-  scheme: FlexScheme.deepBlue,
+  scheme: FlexScheme.outerSpace,
   surfaceMode: FlexSurfaceMode.levelSurfacesLowScaffold,
   blendLevel: 13,
   subThemesData: const FlexSubThemesData(
@@ -36,4 +36,3 @@ final darkTheme = FlexThemeData.dark(
   // To use the Playground font, add GoogleFonts package and uncomment
   // fontFamily: GoogleFonts.notoSans().fontFamily,
 );
-

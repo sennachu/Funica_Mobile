@@ -25,7 +25,9 @@ class ProductCard extends StatelessWidget {
         },
         child: Container(
           decoration: BoxDecoration(
-            color: Color.fromARGB(211, 255, 255, 255),
+            color: Theme.of(context).brightness == Brightness.dark
+                ? Colors.black
+                : Colors.white,
             borderRadius: BorderRadius.circular(15),
             boxShadow: [
               BoxShadow(
@@ -78,12 +80,19 @@ class ProductCard extends StatelessWidget {
                     Text(
                       product.puan,
                       style: GoogleFonts.poppins(
-                          color: Colors.black54, fontSize: 12),
+                        color: Theme.of(context).brightness == Brightness.dark
+                            ? Colors.white
+                            : Colors.black,
+                      ),
                     ),
                     SizedBox(width: 5),
                     Text(
                       product.tire,
-                      style: GoogleFonts.poppins(color: Colors.black87),
+                      style: GoogleFonts.poppins(
+                        color: Theme.of(context).brightness == Brightness.dark
+                            ? Colors.white
+                            : Colors.black,
+                      ),
                     ),
                     SizedBox(width: 10),
                     Container(
@@ -91,7 +100,9 @@ class ProductCard extends StatelessWidget {
                       height: 20,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
-                        color: Color.fromARGB(149, 232, 232, 232),
+                        color: Theme.of(context).brightness == Brightness.dark
+                            ? Color.fromARGB(107, 117, 117, 117)
+                            : Colors.white,
                       ),
                       child: Center(
                         child: Text(

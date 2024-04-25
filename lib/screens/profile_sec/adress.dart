@@ -33,15 +33,15 @@ class _AddressScreenState extends State<AddressScreen> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               buildAddressItem("Home", "1234 Street, City, Country"),
-              SizedBox(height: 10),
+              SizedBox(height: 25),
               buildAddressItem("Work", "5678 Avenue, City, Country"),
-              SizedBox(height: 10),
+              SizedBox(height: 25),
               buildAddressItem("Other", "9012 Boulevard, City, Country"),
-              SizedBox(height: 10),
+              SizedBox(height: 25),
               buildAddressItem("Friend's Place", "3456 Lane, City, Country"),
-              SizedBox(height: 10),
+              SizedBox(height: 25),
               buildAddressItem("Vacation House", "7890 Road, City, Country"),
-              SizedBox(height: 85),
+              SizedBox(height: 55),
               Center(
                 child: InkWell(
                   onTap: () {
@@ -55,8 +55,14 @@ class _AddressScreenState extends State<AddressScreen> {
                       },
                       child: Text('Add New Address'),
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.black,
-                        foregroundColor: Colors.white,
+                        backgroundColor:
+                            Theme.of(context).brightness == Brightness.dark
+                                ? Colors.white
+                                : Colors.black,
+                        foregroundColor:
+                            Theme.of(context).brightness == Brightness.dark
+                                ? Colors.black
+                                : Colors.white,
                         textStyle: GoogleFonts.poppins(color: Colors.black),
                         // Customize the button color here
                       ),
@@ -75,12 +81,23 @@ class _AddressScreenState extends State<AddressScreen> {
 
   Widget buildAddressItem(String title, String address) {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 15.0),
+      padding: EdgeInsets.all(10),
       decoration: BoxDecoration(
+        color: Theme.of(context).brightness == Brightness.dark
+            ? Colors.grey[900]
+            : Colors.grey[300],
         border: Border.all(
           color: Color.fromARGB(9, 137, 137, 137),
         ),
         borderRadius: BorderRadius.circular(10.0),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.2),
+            spreadRadius: 3,
+            blurRadius: 7,
+            offset: Offset(0, 3), // Shadow'un konumunu değiştirir
+          ),
+        ],
       ),
       child: Row(
         children: [

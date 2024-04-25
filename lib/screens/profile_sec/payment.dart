@@ -31,16 +31,16 @@ class _PaymentScreenState extends State<PaymentScreen> {
         child: Column(
           children: [
             _buildPaymentBox('assets/images/paypal.png', "PayPal", "Connected"),
-            SizedBox(height: 15), // Add spacing between payment boxes
+            SizedBox(height: 35), // Add spacing between payment boxes
             _buildPaymentBox(
                 'assets/images/google.png', "Google Pay", "Connected"),
-            SizedBox(height: 15),
+            SizedBox(height: 35),
             _buildPaymentBox(
                 'assets/images/apple.png', "Apple Pay", "Connected"),
-            SizedBox(height: 15),
+            SizedBox(height: 35),
             _buildPaymentBox(
                 'assets/images/mscard.webp', "***  ***  4545", "Connected"),
-            SizedBox(height: 250), // Add spacing between boxes and button
+            SizedBox(height: 150), // Add spacing between boxes and button
             _buildAddCardButton(),
           ],
         ),
@@ -53,11 +53,13 @@ class _PaymentScreenState extends State<PaymentScreen> {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 20), // Add horizontal margin
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).brightness == Brightness.dark
+            ? Colors.grey[800]
+            : Colors.white,
         borderRadius: BorderRadius.circular(12),
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.withOpacity(0.5),
+            color: Colors.grey.withOpacity(0.1),
             spreadRadius: 3,
             blurRadius: 7,
             offset: Offset(0, 3), // changes the shadow position
@@ -97,16 +99,20 @@ class _PaymentScreenState extends State<PaymentScreen> {
         color: Colors.black, // Black background
         borderRadius: BorderRadius.circular(22), // Rounded corners
       ),
-      child: TextButton(
+      child: ElevatedButton(
         onPressed: () {
-          // Handle button press
+          // Handle form submission
         },
-        child: Text(
-          'Add New Card',
-          style: GoogleFonts.poppins(
-            color: Colors.white, // White text
-            fontSize: 20,
-          ),
+        child: Text('Add New Card'),
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Theme.of(context).brightness == Brightness.dark
+              ? Colors.white
+              : Colors.black,
+          foregroundColor: Theme.of(context).brightness == Brightness.dark
+              ? Colors.black
+              : Colors.white,
+          textStyle: GoogleFonts.poppins(color: Colors.black),
+          // Customize the button color here
         ),
       ),
     );

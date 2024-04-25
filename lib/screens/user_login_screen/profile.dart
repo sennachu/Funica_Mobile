@@ -173,18 +173,26 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       Icon(
                         Icons.person_outline,
                         size: 20,
-                        color: Colors.black,
+                        color: Theme.of(context).brightness == Brightness.dark
+                            ? Colors.white
+                            : Colors.black,
                       ),
                       Gap(5),
                       Text(
                         "Edit Profile",
                         style: GoogleFonts.poppins(
-                            fontSize: 15, color: Colors.black),
+                          fontSize: 15,
+                          color: Theme.of(context).brightness == Brightness.dark
+                              ? Colors.white
+                              : Colors.black,
+                        ),
                       ),
                       Gap(230),
                       Icon(
                         Icons.arrow_forward_ios,
-                        color: Colors.black,
+                        color: Theme.of(context).brightness == Brightness.dark
+                            ? Colors.white
+                            : Colors.black,
                         size: 15,
                       ),
                     ],
@@ -199,18 +207,26 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       Icon(
                         Icons.location_on_outlined,
                         size: 20,
-                        color: Colors.black,
+                        color: Theme.of(context).brightness == Brightness.dark
+                            ? Colors.white
+                            : Colors.black,
                       ),
                       Gap(5),
                       Text(
                         "Adress",
                         style: GoogleFonts.poppins(
-                            fontSize: 15, color: Colors.black),
+                          fontSize: 15,
+                          color: Theme.of(context).brightness == Brightness.dark
+                              ? Colors.white
+                              : Colors.black,
+                        ),
                       ),
                       Gap(261),
                       Icon(
                         Icons.arrow_forward_ios,
-                        color: Colors.black,
+                        color: Theme.of(context).brightness == Brightness.dark
+                            ? Colors.white
+                            : Colors.black,
                         size: 15,
                       ),
                     ],
@@ -225,18 +241,26 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       Icon(
                         Icons.notifications_outlined,
                         size: 20,
-                        color: Colors.black,
+                        color: Theme.of(context).brightness == Brightness.dark
+                            ? Colors.white
+                            : Colors.black,
                       ),
                       Gap(5),
                       Text(
                         "Notification",
                         style: GoogleFonts.poppins(
-                            fontSize: 15, color: Colors.black),
+                          fontSize: 15,
+                          color: Theme.of(context).brightness == Brightness.dark
+                              ? Colors.white
+                              : Colors.black,
+                        ),
                       ),
                       Gap(228),
                       Icon(
                         Icons.arrow_forward_ios,
-                        color: Colors.black,
+                        color: Theme.of(context).brightness == Brightness.dark
+                            ? Colors.white
+                            : Colors.black,
                         size: 15,
                       ),
                     ],
@@ -251,18 +275,26 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       Icon(
                         Icons.wallet_outlined,
                         size: 20,
-                        color: Colors.black,
+                        color: Theme.of(context).brightness == Brightness.dark
+                            ? Colors.white
+                            : Colors.black,
                       ),
                       Gap(5),
                       Text(
                         "Payment",
                         style: GoogleFonts.poppins(
-                            fontSize: 15, color: Colors.black),
+                          fontSize: 15,
+                          color: Theme.of(context).brightness == Brightness.dark
+                              ? Colors.white
+                              : Colors.black,
+                        ),
                       ),
                       Gap(251),
                       Icon(
                         Icons.arrow_forward_ios,
-                        color: Colors.black,
+                        color: Theme.of(context).brightness == Brightness.dark
+                            ? Colors.white
+                            : Colors.black,
                         size: 15,
                       ),
                     ],
@@ -277,18 +309,26 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       Icon(
                         Icons.verified_user_outlined,
                         size: 20,
-                        color: Colors.black,
+                        color: Theme.of(context).brightness == Brightness.dark
+                            ? Colors.white
+                            : Colors.black,
                       ),
                       Gap(5),
                       Text(
                         "Security",
                         style: GoogleFonts.poppins(
-                            fontSize: 15, color: Colors.black),
+                          fontSize: 15,
+                          color: Theme.of(context).brightness == Brightness.dark
+                              ? Colors.white
+                              : Colors.black,
+                        ),
                       ),
                       Gap(254),
                       Icon(
                         Icons.arrow_forward_ios,
-                        color: Colors.black,
+                        color: Theme.of(context).brightness == Brightness.dark
+                            ? Colors.white
+                            : Colors.black,
                         size: 15,
                       ),
                     ],
@@ -303,13 +343,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       Icon(
                         Icons.language_outlined,
                         size: 20,
-                        color: Colors.black,
+                        color: Theme.of(context).brightness == Brightness.dark
+                            ? Colors.white
+                            : Colors.black,
                       ),
                       Gap(5),
                       Text(
                         "Language: " + clientCubit.state.language,
                         style: GoogleFonts.poppins(
-                            fontSize: 15, color: Colors.black),
+                          fontSize: 15,
+                          color: Theme.of(context).brightness == Brightness.dark
+                              ? Colors.white
+                              : Colors.black,
+                        ),
                       ),
                     ],
                   )),
@@ -319,13 +365,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   Icon(
                     Icons.visibility_outlined,
                     size: 20,
-                    color: Colors.black,
+                    color: Theme.of(context).brightness == Brightness.dark
+                        ? Colors.white
+                        : Colors.black,
                   ),
                   Gap(5),
                   Text(
                     "Themes" + clientCubit.state.darkMode.toString(),
-                    style:
-                        GoogleFonts.poppins(fontSize: 15, color: Colors.black),
+                    style: GoogleFonts.poppins(
+                      fontSize: 15,
+                      color: Theme.of(context).brightness == Brightness.dark
+                          ? Colors.white
+                          : Colors.black,
+                    ),
                   ),
                   Gap(90),
                   ElevatedButton(
@@ -351,18 +403,26 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     Icon(
                       Icons.lock_outline,
                       size: 20,
-                      color: Colors.black,
+                      color: Theme.of(context).brightness == Brightness.dark
+                          ? Colors.white
+                          : Colors.black,
                     ),
                     Gap(5),
                     Text(
                       "Privacy Policy",
                       style: GoogleFonts.poppins(
-                          fontSize: 15, color: Colors.black),
+                        fontSize: 15,
+                        color: Theme.of(context).brightness == Brightness.dark
+                            ? Colors.white
+                            : Colors.black,
+                      ),
                     ),
                     Gap(213),
                     Icon(
                       Icons.arrow_forward_ios,
-                      color: Colors.black,
+                      color: Theme.of(context).brightness == Brightness.dark
+                          ? Colors.white
+                          : Colors.black,
                       size: 15,
                     ),
                   ],
@@ -378,18 +438,26 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     Icon(
                       Icons.info_outline,
                       size: 20,
-                      color: Colors.black,
+                      color: Theme.of(context).brightness == Brightness.dark
+                          ? Colors.white
+                          : Colors.black,
                     ),
                     Gap(5),
                     Text(
                       "Help",
                       style: GoogleFonts.poppins(
-                          fontSize: 15, color: Colors.black),
+                        fontSize: 15,
+                        color: Theme.of(context).brightness == Brightness.dark
+                            ? Colors.white
+                            : Colors.black,
+                      ),
                     ),
                     Gap(282),
                     Icon(
                       Icons.arrow_forward_ios,
-                      color: Colors.black,
+                      color: Theme.of(context).brightness == Brightness.dark
+                          ? Colors.white
+                          : Colors.black,
                       size: 15,
                     ),
                   ],
@@ -405,18 +473,26 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     Icon(
                       Icons.diversity_3_outlined,
                       size: 20,
-                      color: Colors.black,
+                      color: Theme.of(context).brightness == Brightness.dark
+                          ? Colors.white
+                          : Colors.black,
                     ),
                     Gap(5),
                     Text(
                       "Invite Friends",
                       style: GoogleFonts.poppins(
-                          fontSize: 15, color: Colors.black),
+                        fontSize: 15,
+                        color: Theme.of(context).brightness == Brightness.dark
+                            ? Colors.white
+                            : Colors.black,
+                      ),
                     ),
                     Gap(217),
                     Icon(
                       Icons.arrow_forward_ios,
-                      color: Colors.black,
+                      color: Theme.of(context).brightness == Brightness.dark
+                          ? Colors.white
+                          : Colors.black,
                       size: 15,
                     ),
                   ],
