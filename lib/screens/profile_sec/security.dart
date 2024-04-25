@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:funica_mobile/widgets/bottomNavigation.dart';
 import 'package:go_router/go_router.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class SecurityScreen extends StatefulWidget {
-  const SecurityScreen({super.key});
+  const SecurityScreen({Key? key}) : super(key: key);
 
   @override
   State<SecurityScreen> createState() => _SecurityScreenState();
@@ -22,28 +23,92 @@ class _SecurityScreenState extends State<SecurityScreen> {
         ),
         title: Text("Security"),
       ),
-      body: Column(
+      body: ListView(
+        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
         children: [
-          Expanded(
-            child: Container(
-              decoration: BoxDecoration(
-                border: Border.all(
-                  color: Color.fromARGB(9, 137, 137, 137),
+          ListTile(
+            title: Text(
+              "Remember Me",
+              style: GoogleFonts.poppins(),
+            ),
+            trailing: Switch(
+              value: true,
+              activeColor: Colors.black,
+              onChanged: (value) {
+                setState(() {
+                  // Handle switch state changes here
+                });
+              },
+            ),
+          ),
+          ListTile(
+            title: Text(
+              "Face ID",
+              style: GoogleFonts.poppins(),
+            ),
+            trailing: Switch(
+              value: false,
+              onChanged: (value) {
+                setState(() {
+                  // Handle switch state changes here
+                });
+              },
+            ),
+          ),
+          ListTile(
+            title: Text(
+              "Biometric ID",
+              style: GoogleFonts.poppins(),
+            ),
+            trailing: Switch(
+              value: true,
+              activeColor: Colors.black,
+              onChanged: (value) {
+                setState(() {
+                  // Handle switch state changes here
+                });
+              },
+            ),
+          ),
+          ListTile(
+            title: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "Google Authenticator",
+                  style: GoogleFonts.poppins(),
                 ),
-              ),
-              child: Center(child: Text("Security")),
+                Icon(Icons.arrow_forward_ios),
+              ],
             ),
           ),
-          Container(
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: Color.fromARGB(9, 137, 137, 137),
-              ),
+          SizedBox(height: 20), // Add spacing between list items and buttons
+          ElevatedButton(
+            onPressed: () {
+              // Handle Change PIN button press
+            },
+            child: Text('Change PIN'),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.grey,
+              foregroundColor: Colors.white,
+              textStyle: GoogleFonts.poppins(color: Colors.black),
             ),
           ),
-          BottomNavigator(selectedIndex: 4),
+          SizedBox(height: 10), // Add spacing between buttons
+          ElevatedButton(
+            onPressed: () {
+              // Handle Change Password button press
+            },
+            child: Text('Change Password'),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.grey,
+              foregroundColor: Colors.white,
+              textStyle: GoogleFonts.poppins(color: Colors.black),
+            ),
+          ),
         ],
       ),
+      bottomNavigationBar: BottomNavigator(selectedIndex: 4),
     );
   }
 }
