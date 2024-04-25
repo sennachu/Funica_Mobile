@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:funica_mobile/bloc/client/client_cubit.dart';
+import 'package:funica_mobile/core/utils.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:funica_mobile/screens/user_login_screen/login.dart';
-
 import 'package:funica_mobile/widgets/bottomNavigation.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void showFriendInvitedDialog(BuildContext context) {
   showDialog(
@@ -33,13 +34,25 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  late ClientCubit  clientCubit;
+  late ClientCubit clientCubit;
 
   @override
   void initState() {
+    init();
     super.initState();
-    clientCubit =  context.read<ClientCubit>();
+    clientCubit = context.read<ClientCubit>();
+  }
 
+  String? mail;
+  String? password;
+
+  init() async {
+    await SecureStorage().readSecureData("mail");
+    await SecureStorage().readSecureData("password");
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    mail = prefs.getString('usernameLogin');
+    password = prefs.getString("passwordLogin");
+    setState(() {});
   }
 
   void navigateToLogin(BuildContext context) {
@@ -53,7 +66,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: SingleChildScrollView(
@@ -84,7 +96,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         Text(
                           'Profile',
                           style: GoogleFonts.poppins(
-                            // Poppins fontunu kullan
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
                           ),
@@ -130,14 +141,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 child: Column(
                   children: [
                     Text(
-                      'Eve Holt',
+                      'Your Mail: $mail',
                       style: GoogleFonts.comfortaa(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     Text(
-                      '+1 467 789 469',
+                      'Your Password: $password',
                       style: GoogleFonts.comfortaa(
                         fontSize: 10,
                         fontWeight: FontWeight.bold,
@@ -300,8 +311,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         style: GoogleFonts.poppins(
                             fontSize: 15, color: Colors.black),
                       ),
-                      
-                      
                     ],
                   )),
               Gap(20),
@@ -315,21 +324,21 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   Gap(5),
                   Text(
                     "Themes" + clientCubit.state.darkMode.toString(),
-                     style: GoogleFonts.poppins(
-                          fontSize: 15, color: Colors.black),),
+                    style:
+                        GoogleFonts.poppins(fontSize: 15, color: Colors.black),
+                  ),
                   Gap(90),
                   ElevatedButton(
                       onPressed: () {
                         clientCubit.changeDarkMode(darkMode: true);
                       },
                       child: Text("DA")),
-                      Gap(5),
-                      ElevatedButton(
+                  Gap(5),
+                  ElevatedButton(
                       onPressed: () {
                         clientCubit.changeDarkMode(darkMode: false);
                       },
                       child: Text("GÜ")),
-
                 ],
               ),
               Gap(20),
@@ -415,7 +424,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
               Gap(20),
               GestureDetector(
-                onTap: () {
+                onTap: () async {
+                  final SharedPreferences prefs =
+                      await SharedPreferences.getInstance();
+                  prefs.clear();
                   GoRouter.of(context).go('/boarding');
                 },
                 child: Row(

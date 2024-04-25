@@ -8,10 +8,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 
-void main() {
-  runApp(LoginScreen());
-}
-
 class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -218,6 +214,10 @@ class _LoginPageState extends State<LoginPage> {
                     print('Data Sending Success.');
                     Navigator.pushNamedAndRemoveUntil(
                         context, "/home", (Route<dynamic> route) => false);
+                    final SharedPreferences prefs =
+                        await SharedPreferences.getInstance();
+                    prefs.setString("usernameLogin", _emailController.text);
+                    prefs.setString("passwordLogin", _passwordController.text);
                   } else {
                     print('Hata: ${response.body}');
                     ScaffoldMessenger.of(context).showSnackBar(
@@ -232,10 +232,6 @@ class _LoginPageState extends State<LoginPage> {
                         .writeSecureData("username", _emailController.text);
                     SecureStorage()
                         .writeSecureData("password", _passwordController.text);
-                    final SharedPreferences prefs =
-                        await SharedPreferences.getInstance();
-                    prefs.setString("username", _emailController.text);
-                    prefs.setString("password", _passwordController.text);
                   }
                 }
               },
