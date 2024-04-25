@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:funica_mobile/bloc/client/client_cubit.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:funica_mobile/screens/client/login.dart';
+import 'package:funica_mobile/screens/user_login_screen/login.dart';
 
 import 'package:funica_mobile/widgets/bottomNavigation.dart';
 
@@ -25,7 +27,21 @@ void showFriendInvitedDialog(BuildContext context) {
   );
 }
 
-class ProfileScreen extends StatelessWidget {
+class ProfileScreen extends StatefulWidget {
+  @override
+  State<ProfileScreen> createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
+  late ClientCubit  clientCubit;
+
+  @override
+  void initState() {
+    super.initState();
+    clientCubit =  context.read<ClientCubit>();
+
+  }
+
   void navigateToLogin(BuildContext context) {
     Navigator.pushAndRemoveUntil(
       context,
@@ -37,7 +53,7 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: SingleChildScrollView(
@@ -280,26 +296,41 @@ class ProfileScreen extends StatelessWidget {
                       ),
                       Gap(5),
                       Text(
-                        "Language",
+                        "Language: " + clientCubit.state.language,
                         style: GoogleFonts.poppins(
                             fontSize: 15, color: Colors.black),
                       ),
-                      Gap(243),
-                      Icon(
-                        Icons.arrow_forward_ios,
-                        color: Colors.black,
-                        size: 15,
-                      ),
+                      
+                      
                     ],
                   )),
               Gap(20),
-              Center(
-                child: Text(
-                  "Buraya dark mode gelecek",
-                  style: GoogleFonts.poppins(
-                    fontSize: 25,
+              Row(
+                children: [
+                  Icon(
+                    Icons.visibility_outlined,
+                    size: 20,
+                    color: Colors.black,
                   ),
-                ),
+                  Gap(5),
+                  Text(
+                    "Themes" + clientCubit.state.darkMode.toString(),
+                     style: GoogleFonts.poppins(
+                          fontSize: 15, color: Colors.black),),
+                  Gap(90),
+                  ElevatedButton(
+                      onPressed: () {
+                        clientCubit.changeDarkMode(darkMode: true);
+                      },
+                      child: Text("DA")),
+                      Gap(5),
+                      ElevatedButton(
+                      onPressed: () {
+                        clientCubit.changeDarkMode(darkMode: false);
+                      },
+                      child: Text("GÜ")),
+
+                ],
               ),
               Gap(20),
               GestureDetector(

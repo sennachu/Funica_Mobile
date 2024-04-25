@@ -13,7 +13,7 @@ class Storage {
       await storage.setInt("launchCount", 1);
       return true;
     } else {
-       counter ??= 0;
+      counter ??= 0;
       await storage.setInt("launchCount", counter + 1);
       return false;
     }
@@ -22,6 +22,26 @@ class Storage {
   firstLaunched() async {
     final SharedPreferences storage = await SharedPreferences.getInstance();
     await storage.setBool("runned", true);
+  }
+
+  setConfig({String? language, bool? darkMode}) async {
+    final SharedPreferences storage = await SharedPreferences.getInstance();
+
+    if (language != null) {
+      await storage.setString("language", language);
+    }
+    if (darkMode != null) {
+      await storage.setBool("darkMode", darkMode);
+    }
+  }
+
+  getConfig() async {
+    final SharedPreferences storage = await SharedPreferences.getInstance();
+
+    return {
+      "language": storage.getString("language"),
+      "darkMode": storage.getBool("darkMode"),
+    };
   }
 
   clearStorage() async {

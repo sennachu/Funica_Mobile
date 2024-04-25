@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:funica_mobile/bloc/cart/cart_cubit.dart';
+import 'package:funica_mobile/bloc/client/client_cubit.dart';
 import 'package:funica_mobile/model/home_products_model.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
@@ -17,6 +20,19 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  //sepet beyni
+  late CartCubit cartCubit;
+  late ClientCubit  clientCubit;
+
+  @override
+  void initState() {
+    super.initState();
+    cartCubit = context.read<CartCubit>();
+    clientCubit =  context.read<ClientCubit>();
+
+  }
+
+  //slider
   final List<String> images = [
     'assets/images/slider1.png',
     'assets/images/slider2.png',
@@ -32,7 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
         categoryTitle: "Most Popular", products: mostPopular.products);
     return Scaffold(
       extendBodyBehindAppBar: false,
-      backgroundColor: Colors.white,
+      
       appBar: AppBar(
         backgroundColor: Colors.white,
         leading: Padding(

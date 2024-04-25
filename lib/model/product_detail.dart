@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:funica_mobile/bloc/cart/cart_cubit.dart';
 import 'package:funica_mobile/model/product.dart';
 import 'package:funica_mobile/screens/static/home.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -13,22 +15,42 @@ class ProductDetail extends StatefulWidget {
 }
 
 class _ProductDetailState extends State<ProductDetail> {
+  late CartCubit cartCubit;
+
+  @override
+  void initState() {
+    super.initState();
+    cartCubit = context.read<CartCubit>();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(
-        children: [
-          ListView(
+    return BlocBuilder<CartCubit, CartState>(
+      builder: (context, state) {
+        return Scaffold(
+          body: Stack(
             children: [
-              image(),
-              subDetail(),
-              title(context),
-              colors(),
+              ListView(
+                children: [
+                  image(),
+                  subDetail(),
+                  title(context),
+                  colors(),
+                  Padding(
+                      padding: [20, 20, 20, 0].paddingLTRB,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          cartCubit.sepeteEkle(ad: "mac", sayi: 1, fiyat: 767383);
+                        },
+                        child: Text("Add To Cart"),
+                      ))
+                ],
+              ),
+              appbar(context)
             ],
           ),
-          appbar(context)
-        ],
-      ),
+        );
+      }
     );
   }
 

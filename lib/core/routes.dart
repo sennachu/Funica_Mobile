@@ -1,11 +1,11 @@
 import 'package:funica_mobile/model/product_detail.dart';
-import 'package:funica_mobile/screens/client/letyouin.dart';
+import 'package:funica_mobile/screens/user_login_screen/letyouin.dart';
 import 'package:funica_mobile/screens/product/chair.dart';
 import 'package:go_router/go_router.dart';
 
-import '../screens/client/login.dart';
-import '../screens/client/profile.dart';
-import '../screens/client/register.dart';
+import '../screens/user_login_screen/login.dart';
+import '../screens/user_login_screen/profile.dart';
+import '../screens/user_login_screen/register.dart';
 import '../screens/core/error.dart';
 import '../screens/core/loader.dart';
 import '../screens/product/cupboard.dart';

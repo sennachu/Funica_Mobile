@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:funica_mobile/screens/client/login.dart';
-import 'package:funica_mobile/screens/client/register.dart';
+import 'package:funica_mobile/screens/user_login_screen/login.dart';
+import 'package:funica_mobile/screens/user_login_screen/register.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
