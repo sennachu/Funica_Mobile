@@ -21,7 +21,10 @@ class _PrivacyScreenState extends State<PrivacyScreen> {
             GoRouter.of(context).go('/profile');
           },
         ),
-        title: Text("Privacy"),
+        title: Text(
+          "Privacy",
+          style: GoogleFonts.poppins(),
+        ),
       ),
       body: Column(
         children: [

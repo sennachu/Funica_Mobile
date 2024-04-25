@@ -43,7 +43,10 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
             GoRouter.of(context).go('/profile');
           },
         ),
-        title: Text("Edit Profile Screen"),
+        title: Text(
+          "Edit Profile Screen",
+          style: GoogleFonts.poppins(),
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(30.0),

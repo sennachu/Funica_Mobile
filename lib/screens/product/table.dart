@@ -1,72 +1,62 @@
 import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
+import 'package:funica_mobile/model/home_products_model.dart';
+import 'package:funica_mobile/model/product_provider.dart';
 import 'package:go_router/go_router.dart';
+import 'package:google_fonts/google_fonts.dart';
+import '../../model/product_card.dart';
 
-import '../static/home.dart';
-
-class TableScreen extends StatefulWidget {
+class TableScreen extends StatelessWidget {
   const TableScreen({Key? key}) : super(key: key);
 
   @override
-  State<TableScreen> createState() => _TableScreenState();
-}
-
-class _TableScreenState extends State<TableScreen> {
-  @override
   Widget build(BuildContext context) {
+    // Access the chair data
+    Widget homeProductCategories(HomeProductsModel model) {
+      return Column(
+        children: List.generate(
+          (model.products.length / 2).ceil(),
+          (index) {
+            int startIndex = index * 2;
+            int endIndex = startIndex + 2;
+            if (endIndex > model.products.length) {
+              endIndex = model.products.length;
+            }
+            return Row(
+              children: List.generate(
+                endIndex - startIndex,
+                (i) {
+                  return Expanded(
+                    child: SizedBox(
+                      height: 250,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: ProductCard(
+                          product: model.products[startIndex + i],
+                        ),
+                      ),
+                    ),
+                  );
+                },
+              ),
+            );
+          },
+        ),
+      );
+    }
+
     return Scaffold(
-       appBar: AppBar(
+      appBar: AppBar(
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
             GoRouter.of(context).go('/home');
           },
         ),
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text("Table",style: TextStyle(fontWeight: FontWeight.bold),),
-            Icon(Icons.search)
-          ],
-        ),
+        title: Text("Table Products",style: GoogleFonts.poppins(),),
       ),
-      // body: SingleChildScrollView(
-      //   child: Column(
-      //     children: [
-      //        Row(
-      //            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      //           children: [
-      //             homeProductsDetails(photo: "assets/images/chair2.png",name: "Padded Chair",icon: Icon(Icons.star_half),puan: "4.5", tire: "|", sold: "8.456 sold",price: "\$120",),
-      //             homeProductsDetails(photo: "assets/images/cup1.png",name: "Small Bookcase",icon: Icon(Icons.star_half),puan: "4.7", tire: "|", sold: "6.238 sold",price: "\$145",),
-      //           ],
-      //         ),
-      //         Gap(15),
-      //          Row(
-      //            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      //           children: [
-      //             homeProductsDetails(photo: "assets/images/lamp1.png",name: "Glass Lamp",icon: Icon(Icons.star_half),puan: "4.3", tire: "|", sold: "5.156 sold",price: "\$40",),
-      //             homeProductsDetails(photo: "assets/images/kitchen1.png",name: "Glass Packge",icon: Icon(Icons.star_half),puan: "4.9", tire: "|", sold: "4.968 sold",price: "\$55",),
-      //           ],
-      //         ),
-      //          Row(
-      //          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      //         children: [
-      //           homeProductsDetails(photo: "assets/images/chair2.png",name: "Padded Chair",icon: Icon(Icons.star_half),puan: "4.5", tire: "|", sold: "8.456 sold",price: "\$120",),
-      //           homeProductsDetails(photo: "assets/images/cup1.png",name: "Small Bookcase",icon: Icon(Icons.star_half),puan: "4.7", tire: "|", sold: "6.238 sold",price: "\$145",),
-      //         ],
-      //       ),
-      //       Gap(15),
-      //        Row(
-      //          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      //         children: [
-      //           homeProductsDetails(photo: "assets/images/lamp1.png",name: "Glass Lamp",icon: Icon(Icons.star_half),puan: "4.3", tire: "|", sold: "5.156 sold",price: "\$40",),
-      //           homeProductsDetails(photo: "assets/images/kitchen1.png",name: "Glass Packge",icon: Icon(Icons.star_half),puan: "4.9", tire: "|", sold: "4.968 sold",price: "\$55",),
-      //         ],
-      //       ),
-      //   ],),
-      // )
-            
-            
+      body: SingleChildScrollView(
+        child: homeProductCategories(table),
+      ),
     );
   }
 }

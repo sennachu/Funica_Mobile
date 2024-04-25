@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:funica_mobile/widgets/bottomNavigation.dart';
 import 'package:go_router/go_router.dart';
+import 'package:google_fonts/google_fonts.dart';
+
 class LanguageScreen extends StatefulWidget {
   const LanguageScreen({super.key});
 
@@ -19,7 +21,10 @@ class _LanguageScreenState extends State<LanguageScreen> {
             GoRouter.of(context).go('/profile');
           },
         ),
-        title: Text("Language"),
+        title: Text(
+          "Language",
+          style: GoogleFonts.poppins(),
+        ),
       ),
       body: Column(
         children: [

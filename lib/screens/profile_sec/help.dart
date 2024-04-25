@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:funica_mobile/widgets/bottomNavigation.dart';
 import 'package:go_router/go_router.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class HelpScreen extends StatefulWidget {
   const HelpScreen({super.key});
@@ -20,7 +21,10 @@ class _HelpScreenState extends State<HelpScreen> {
             GoRouter.of(context).go('/profile');
           },
         ),
-        title: Text("Help"),
+        title: Text(
+          "Help",
+          style: GoogleFonts.poppins(),
+        ),
       ),
       body: Column(
         children: [

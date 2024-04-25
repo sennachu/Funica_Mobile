@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../../core/storage.dart';
 
 class BottomNavigator extends StatelessWidget {
@@ -129,7 +130,7 @@ class AltMenuItem extends StatelessWidget {
             ),
             Text(
               label,
-              style: TextStyle(
+              style: GoogleFonts.poppins(
                 fontSize: 10,
                 color:
                     isActive ? Colors.black : Color.fromARGB(95, 138, 138, 138),

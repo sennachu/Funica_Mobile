@@ -21,7 +21,10 @@ class _SecurityScreenState extends State<SecurityScreen> {
             GoRouter.of(context).go('/profile');
           },
         ),
-        title: Text("Security"),
+        title: Text(
+          "Security",
+          style: GoogleFonts.poppins(),
+        ),
       ),
       body: ListView(
         padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),

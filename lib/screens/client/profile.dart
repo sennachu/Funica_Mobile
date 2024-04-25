@@ -151,7 +151,8 @@ class ProfileScreen extends StatelessWidget {
                       Gap(5),
                       Text(
                         "Edit Profile",
-                        style: TextStyle(fontSize: 15, color: Colors.black),
+                        style: GoogleFonts.poppins(
+                            fontSize: 15, color: Colors.black),
                       ),
                       Gap(230),
                       Icon(
@@ -176,7 +177,8 @@ class ProfileScreen extends StatelessWidget {
                       Gap(5),
                       Text(
                         "Adress",
-                        style: TextStyle(fontSize: 15, color: Colors.black),
+                        style: GoogleFonts.poppins(
+                            fontSize: 15, color: Colors.black),
                       ),
                       Gap(261),
                       Icon(
@@ -201,7 +203,8 @@ class ProfileScreen extends StatelessWidget {
                       Gap(5),
                       Text(
                         "Notification",
-                        style: TextStyle(fontSize: 15, color: Colors.black),
+                        style: GoogleFonts.poppins(
+                            fontSize: 15, color: Colors.black),
                       ),
                       Gap(228),
                       Icon(
@@ -226,7 +229,8 @@ class ProfileScreen extends StatelessWidget {
                       Gap(5),
                       Text(
                         "Payment",
-                        style: TextStyle(fontSize: 15, color: Colors.black),
+                        style: GoogleFonts.poppins(
+                            fontSize: 15, color: Colors.black),
                       ),
                       Gap(251),
                       Icon(
@@ -251,7 +255,8 @@ class ProfileScreen extends StatelessWidget {
                       Gap(5),
                       Text(
                         "Security",
-                        style: TextStyle(fontSize: 15, color: Colors.black),
+                        style: GoogleFonts.poppins(
+                            fontSize: 15, color: Colors.black),
                       ),
                       Gap(254),
                       Icon(
@@ -276,7 +281,8 @@ class ProfileScreen extends StatelessWidget {
                       Gap(5),
                       Text(
                         "Language",
-                        style: TextStyle(fontSize: 15, color: Colors.black),
+                        style: GoogleFonts.poppins(
+                            fontSize: 15, color: Colors.black),
                       ),
                       Gap(243),
                       Icon(
@@ -290,7 +296,7 @@ class ProfileScreen extends StatelessWidget {
               Center(
                 child: Text(
                   "Buraya dark mode gelecek",
-                  style: TextStyle(
+                  style: GoogleFonts.poppins(
                     fontSize: 25,
                   ),
                 ),
@@ -310,7 +316,8 @@ class ProfileScreen extends StatelessWidget {
                     Gap(5),
                     Text(
                       "Privacy Policy",
-                      style: TextStyle(fontSize: 15, color: Colors.black),
+                      style: GoogleFonts.poppins(
+                          fontSize: 15, color: Colors.black),
                     ),
                     Gap(213),
                     Icon(
@@ -336,7 +343,8 @@ class ProfileScreen extends StatelessWidget {
                     Gap(5),
                     Text(
                       "Help",
-                      style: TextStyle(fontSize: 15, color: Colors.black),
+                      style: GoogleFonts.poppins(
+                          fontSize: 15, color: Colors.black),
                     ),
                     Gap(282),
                     Icon(
@@ -362,7 +370,8 @@ class ProfileScreen extends StatelessWidget {
                     Gap(5),
                     Text(
                       "Invite Friends",
-                      style: TextStyle(fontSize: 15, color: Colors.black),
+                      style: GoogleFonts.poppins(
+                          fontSize: 15, color: Colors.black),
                     ),
                     Gap(217),
                     Icon(

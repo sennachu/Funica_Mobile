@@ -21,7 +21,10 @@ class _AddressScreenState extends State<AddressScreen> {
             GoRouter.of(context).go('/profile');
           },
         ),
-        title: Text("Address"),
+        title: Text(
+          "Address",
+          style: GoogleFonts.poppins(),
+        ),
       ),
       body: SingleChildScrollView(
         child: Padding(

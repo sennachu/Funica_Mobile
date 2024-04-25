@@ -4,6 +4,7 @@ import 'package:funica_mobile/model/home_products_model.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:funica_mobile/model/product_provider.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:grock/grock.dart';
 import '../../model/product_card.dart';
 import '../../widgets/bottomNavigation.dart';
@@ -30,7 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
     final HomeProductsModel model = HomeProductsModel(
         categoryTitle: "Most Popular", products: mostPopular.products);
     return Scaffold(
-      extendBodyBehindAppBar: true,
+      extendBodyBehindAppBar: false,
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -47,7 +48,8 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 Text(
                   'Good Morning',
-                  style: TextStyle(fontSize: 12, color: Colors.black54),
+                  style:
+                      GoogleFonts.poppins(fontSize: 12, color: Colors.black54),
                 ),
                 SizedBox(width: 10),
                 Icon(
@@ -60,7 +62,8 @@ class _HomeScreenState extends State<HomeScreen> {
             SizedBox(height: 5),
             Text(
               'Eva Holt',
-              style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+              style: GoogleFonts.poppins(
+                  fontSize: 14, fontWeight: FontWeight.bold),
             ),
           ],
         ),
@@ -88,7 +91,7 @@ class _HomeScreenState extends State<HomeScreen> {
               child: SizedBox(
                 height: 52,
                 child: TextField(
-                  style: TextStyle(color: Colors.black45),
+                  style: GoogleFonts.poppins(color: Colors.black45),
                   decoration: InputDecoration(
                     filled: true,
                     fillColor: Color.fromARGB(255, 244, 243, 243),
@@ -97,7 +100,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       borderSide: BorderSide.none,
                     ),
                     hintText: "Search",
-                    hintStyle: TextStyle(color: Colors.black26),
+                    hintStyle: GoogleFonts.poppins(color: Colors.black26),
                     prefixIcon: Icon(Icons.search),
                     prefixIconColor: Colors.black26,
                     suffixIcon: Icon(
@@ -115,11 +118,13 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   Text(
                     'Special Offers',
-                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                    style: GoogleFonts.poppins(
+                        fontSize: 15, fontWeight: FontWeight.bold),
                   ),
                   Text(
                     'See All',
-                    style: TextStyle(fontSize: 12, color: Colors.black87),
+                    style: GoogleFonts.poppins(
+                        fontSize: 12, color: Colors.black87),
                   ),
                 ],
               ),
@@ -214,7 +219,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             Gap(3),
                             Text(
                               "Sofa",
-                              style: TextStyle(
+                              style: GoogleFonts.poppins(
                                   fontWeight: FontWeight.bold, fontSize: 11),
                             ),
                           ],
@@ -238,7 +243,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               Gap(3),
                               Text(
                                 "Chair",
-                                style: TextStyle(
+                                style: GoogleFonts.poppins(
                                     fontWeight: FontWeight.bold, fontSize: 11),
                               ),
                             ],
@@ -263,7 +268,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               Gap(3),
                               Text(
                                 "Table",
-                                style: TextStyle(
+                                style: GoogleFonts.poppins(
                                     fontWeight: FontWeight.bold, fontSize: 11),
                               ),
                             ],
@@ -288,7 +293,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               Gap(3),
                               Text(
                                 "Kitchen",
-                                style: TextStyle(
+                                style: GoogleFonts.poppins(
                                     fontWeight: FontWeight.bold, fontSize: 11),
                               ),
                             ],
@@ -317,7 +322,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               Gap(3),
                               Text(
                                 "Lamp",
-                                style: TextStyle(
+                                style: GoogleFonts.poppins(
                                     fontWeight: FontWeight.bold, fontSize: 11),
                               ),
                             ],
@@ -342,7 +347,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               Gap(3),
                               Text(
                                 "Cupboard",
-                                style: TextStyle(
+                                style: GoogleFonts.poppins(
                                     fontWeight: FontWeight.bold, fontSize: 11),
                               ),
                             ],
@@ -367,7 +372,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               Gap(3),
                               Text(
                                 "Vase",
-                                style: TextStyle(
+                                style: GoogleFonts.poppins(
                                     fontWeight: FontWeight.bold, fontSize: 11),
                               ),
                             ],
@@ -392,7 +397,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               Gap(3),
                               Text(
                                 "Others",
-                                style: TextStyle(
+                                style: GoogleFonts.poppins(
                                     fontWeight: FontWeight.bold, fontSize: 11),
                               ),
                             ],
@@ -412,11 +417,13 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   Text(
                     'Most Popular',
-                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                    style: GoogleFonts.poppins(
+                        fontSize: 15, fontWeight: FontWeight.bold),
                   ),
                   Text(
                     'See All',
-                    style: TextStyle(fontSize: 12, color: Colors.black87),
+                    style: GoogleFonts.poppins(
+                        fontSize: 12, color: Colors.black87),
                   ),
                 ],
               ),
@@ -432,44 +439,38 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-
-
- Widget homeProductCategories(HomeProductsModel model) {
-  return Column(
-    children: List.generate(
-      (model.products.length / 2).ceil(),
-      (index) {
-        int startIndex = index * 2;
-        int endIndex = startIndex + 2;
-        if (endIndex > model.products.length) {
-          endIndex = model.products.length;
-        }
-        return Row(
-          children: List.generate(
-            endIndex - startIndex,
-            (i) {
-              return Expanded(
-                child: SizedBox(
-                  height: 250,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: ProductCard(
-                      product: model.products[startIndex + i],
+  Widget homeProductCategories(HomeProductsModel model) {
+    return Column(
+      children: List.generate(
+        (model.products.length / 2).ceil(),
+        (index) {
+          int startIndex = index * 2;
+          int endIndex = startIndex + 2;
+          if (endIndex > model.products.length) {
+            endIndex = model.products.length;
+          }
+          return Row(
+            children: List.generate(
+              endIndex - startIndex,
+              (i) {
+                return Expanded(
+                  child: SizedBox(
+                    height: 250,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: ProductCard(
+                        product: model.products[startIndex + i],
+                      ),
                     ),
                   ),
-                ),
-              );
-            },
-          ),
-        );
-      },
-    ),
-  );
-}
-
-
-
-
+                );
+              },
+            ),
+          );
+        },
+      ),
+    );
+  }
 
   Padding productsContainer(BuildContext context) {
     return Padding(
@@ -494,7 +495,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Center(
                   child: Text(
                     "All",
-                    style: TextStyle(
+                    style: GoogleFonts.poppins(
                         fontSize: 10,
                         color: Colors.white,
                         fontWeight: FontWeight.bold),
@@ -519,7 +520,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Center(
                   child: Text(
                     "Sofa",
-                    style: TextStyle(
+                    style: GoogleFonts.poppins(
                         fontSize: 10,
                         color: Colors.black,
                         fontWeight: FontWeight.bold),
@@ -544,7 +545,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Center(
                   child: Text(
                     "Chair",
-                    style: TextStyle(
+                    style: GoogleFonts.poppins(
                         fontSize: 10,
                         color: Colors.black,
                         fontWeight: FontWeight.bold),
@@ -569,7 +570,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Center(
                   child: Text(
                     "Table",
-                    style: TextStyle(
+                    style: GoogleFonts.poppins(
                         fontSize: 10,
                         color: Colors.black,
                         fontWeight: FontWeight.bold),
@@ -594,7 +595,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Center(
                   child: Text(
                     "Kitchen",
-                    style: TextStyle(
+                    style: GoogleFonts.poppins(
                         fontSize: 10,
                         color: Colors.black,
                         fontWeight: FontWeight.bold),
@@ -619,7 +620,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Center(
                   child: Text(
                     "Lamp",
-                    style: TextStyle(
+                    style: GoogleFonts.poppins(
                         fontSize: 10,
                         color: Colors.black,
                         fontWeight: FontWeight.bold),
@@ -644,7 +645,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Center(
                   child: Text(
                     "Cupboard",
-                    style: TextStyle(
+                    style: GoogleFonts.poppins(
                         fontSize: 10,
                         color: Colors.black,
                         fontWeight: FontWeight.bold),
@@ -669,7 +670,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Center(
                   child: Text(
                     "Vase",
-                    style: TextStyle(
+                    style: GoogleFonts.poppins(
                         fontSize: 10,
                         color: Colors.black,
                         fontWeight: FontWeight.bold),

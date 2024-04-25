@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart'; // Google Fonts paketini ekledik
 import 'package:funica_mobile/model/product.dart';
 import 'package:funica_mobile/model/product_detail.dart';
 import 'package:gap/gap.dart';
@@ -6,6 +7,7 @@ import 'package:grock/grock.dart';
 
 class ProductCard extends StatelessWidget {
   Product product;
+
   ProductCard({required this.product});
 
   @override
@@ -54,8 +56,11 @@ class ProductCard extends StatelessWidget {
                   children: [
                     Text(
                       "${product.name}",
-                      style:
-                          TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+                      style: GoogleFonts.poppins(
+                        // Poppins yazı tipini burada kullanıyoruz
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ],
                 ),
@@ -72,12 +77,13 @@ class ProductCard extends StatelessWidget {
                     SizedBox(width: 6),
                     Text(
                       product.puan,
-                      style: TextStyle(color: Colors.black54, fontSize: 12),
+                      style: GoogleFonts.poppins(
+                          color: Colors.black54, fontSize: 12),
                     ),
                     SizedBox(width: 5),
                     Text(
                       product.tire,
-                      style: TextStyle(color: Colors.black87),
+                      style: GoogleFonts.poppins(color: Colors.black87),
                     ),
                     SizedBox(width: 10),
                     Container(
@@ -90,7 +96,7 @@ class ProductCard extends StatelessWidget {
                       child: Center(
                         child: Text(
                           product.sold,
-                          style: TextStyle(
+                          style: GoogleFonts.poppins(
                               fontSize: 8, fontWeight: FontWeight.bold),
                         ),
                       ),
@@ -105,8 +111,8 @@ class ProductCard extends StatelessWidget {
                     padding: 10.horizontalP,
                     child: Text(
                       product.price,
-                      style:
-                          TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
+                      style: GoogleFonts.poppins(
+                          fontSize: 12, fontWeight: FontWeight.bold),
                     ),
                   ),
                 ],
