@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:funica_mobile/bloc/cart/cart_cubit.dart';
+import 'package:funica_mobile/bloc/favorite/products_cubit.dart';
 
 import 'bloc/client/client_cubit.dart';
 import 'core/locazilations.dart';
@@ -19,6 +20,9 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+           BlocProvider(create: (context) => ProductsCubit(
+              ProductsState(favorites: []),
+           )),
         BlocProvider(
           create: (context) => ClientCubit(
             ClientState(darkMode: false, language: "en"),

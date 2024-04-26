@@ -12,6 +12,8 @@ class Product {
   final String descTitle;
   final String descDetail;
   List<Color> colors;
+  bool isFavorite;
+
   Product({
     required this.id,
     required this.icon,
@@ -24,5 +26,6 @@ class Product {
     required this.descTitle,
     required this.descDetail,
     required this.colors,
+    this.isFavorite= false,
   });
 }

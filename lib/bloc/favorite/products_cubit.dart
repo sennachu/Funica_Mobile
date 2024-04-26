@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:funica_mobile/model/product.dart';
 
 part 'products_state.dart';
 
@@ -45,11 +46,11 @@ class ProductsCubit extends Cubit<ProductsState> {
     }
   }
 
-  bool isFavorite(int productId) {
+  bool isFavorite(String productId) {
     return state.favorites.any((element) => element["id"] == productId);
   }
 
-  removeFromFavorites(int productID) {
+  removeFromFavorites(String productID) {
     var currentFavorites = state.favorites;
 
     currentFavorites.removeWhere((element) => element["id"] == productID);

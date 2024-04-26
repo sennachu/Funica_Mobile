@@ -6,13 +6,15 @@ part 'cart_state.dart';
 class CartCubit extends Cubit<CartState> {
   CartCubit(super.initialState);
 
-  sepeteEkle({required String ad, required int sayi, required double fiyat}) {
+  sepeteEkle({ required String id,required String ad, required int sayi, required String fiyat, required String gorsel}) {
     var suankiSepet = state.sepet;
 
     suankiSepet.add({
+      "id": id,
       "name": ad,
       "count": sayi,
       "price": fiyat,
+      "gorsel": gorsel
     });
 
     final yeniDurum = CartState(
@@ -21,8 +23,20 @@ class CartCubit extends Cubit<CartState> {
     emit(yeniDurum);
   }
 
+ sepettenCikart({required String id}) {
+    var suankiSepet = state.sepet;
+
+    suankiSepet.removeWhere((element) => element["id"] == id);
+
+    final yeniDurum = CartState(
+      sepet: suankiSepet,
+    );
+    emit(yeniDurum);
+  }
+
+
   sepetiBosalt(
-      {required String ad, required int sayi, required double fiyati}) {
+      {required String id}) {
     final yeniDurum = CartState(
       sepet: [],
     );

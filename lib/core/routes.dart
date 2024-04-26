@@ -45,7 +45,7 @@ final routes = GoRouter(
     GoRoute(
       path: '/home',
       builder: (context, state) => const HomeScreen(),
-    ),
+    ), 
     GoRoute(
       path: '/boarding',
       builder: (context, state) => const BoardingScreen(),
@@ -106,11 +106,11 @@ final routes = GoRouter(
     GoRoute(
       path: '/kitchen',
       builder: (context, state) => const KitchenScreen(),
-    ),
+    ), 
     GoRoute(
       path: '/lamp',
       builder: (context, state) => const LampScreen(),
-    ),
+    ), 
     GoRoute(
       path: '/cupboard',
       builder: (context, state) => const CupboardScreen(),
@@ -118,11 +118,11 @@ final routes = GoRouter(
     GoRoute(
       path: '/vase',
       builder: (context, state) => const VaseScreen(),
-    ),
+    ), 
     GoRoute(
       path: '/others',
       builder: (context, state) => const OthersScreen(),
-    ),
+    ), 
     GoRoute(
       path: '/edit',
       builder: (context, state) => const EditProfileScreen(),
@@ -155,9 +155,9 @@ final routes = GoRouter(
       path: '/help',
       builder: (context, state) => const HelpScreen(),
     ),
-    GoRoute(
+  /*  GoRoute(
       path: '/others',
       builder: (context, state) => const OthersScreen(),
-    ),
+    ), */
   ],
 );

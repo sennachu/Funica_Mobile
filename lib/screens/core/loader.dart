@@ -17,7 +17,7 @@ class _LoaderScreenState extends State<LoaderScreen> {
   loadApp() async {
     final storage = Storage();
     //hafızayı silme kodu
-    // storage.clearStorage();
+     storage.clearStorage();
     final firstLaunch = await storage.isFirstLaunch();
 
     if (firstLaunch) {

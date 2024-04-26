@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:funica_mobile/bloc/cart/cart_cubit.dart';
+import 'package:funica_mobile/bloc/favorite/products_cubit.dart';
 import 'package:funica_mobile/model/product.dart';
 import 'package:funica_mobile/screens/static/home.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -16,17 +17,18 @@ class ProductDetail extends StatefulWidget {
 
 class _ProductDetailState extends State<ProductDetail> {
   late CartCubit cartCubit;
-
+  late ProductsCubit productsCubit;
   @override
   void initState() {
     super.initState();
+    productsCubit = context.read<ProductsCubit>();
     cartCubit = context.read<CartCubit>();
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<CartCubit, CartState>(
-      builder: (context, state) {
+    return BlocBuilder<ProductsCubit, ProductsState>(builder: (context, state2) {
+      return BlocBuilder<CartCubit, CartState>(builder: (context, state) {
         return Scaffold(
           body: Stack(
             children: [
@@ -36,22 +38,15 @@ class _ProductDetailState extends State<ProductDetail> {
                   subDetail(),
                   title(context),
                   colors(),
-                  Padding(
-                      padding: [20, 20, 20, 0].paddingLTRB,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          cartCubit.sepeteEkle(ad: "mac", sayi: 1, fiyat: 767383);
-                        },
-                        child: Text("Add To Cart"),
-                      ))
+                 
                 ],
               ),
               appbar(context)
             ],
           ),
         );
-      }
-    );
+      });
+    });
   }
 
   Padding title(BuildContext context) {
@@ -143,11 +138,7 @@ class _ProductDetailState extends State<ProductDetail> {
   Padding subDetail() {
     return Padding(
       padding: [20, 20, 20, 0].paddingLTRB,
-      child: Text(widget.product.name,
-          style: TextStyle(
-              fontFamily: GoogleFonts.poppins().fontFamily,
-              fontSize: 22,
-              fontWeight: FontWeight.bold)),
+      child: Text(widget.product.name, style: TextStyle(fontFamily: GoogleFonts.poppins().fontFamily, fontSize: 22, fontWeight: FontWeight.bold)),
     );
   }
 

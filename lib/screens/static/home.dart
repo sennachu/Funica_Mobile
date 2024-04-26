@@ -3,7 +3,10 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:funica_mobile/bloc/cart/cart_cubit.dart';
 import 'package:funica_mobile/bloc/client/client_cubit.dart';
+import 'package:funica_mobile/bloc/favorite/products_cubit.dart';
+import 'package:funica_mobile/favorites/favorites.dart';
 import 'package:funica_mobile/model/home_products_model.dart';
+import 'package:funica_mobile/screens/product/sofa.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:funica_mobile/model/product_provider.dart';
@@ -23,12 +26,14 @@ class _HomeScreenState extends State<HomeScreen> {
   //sepet beyni
   late CartCubit cartCubit;
   late ClientCubit clientCubit;
+  late ProductsCubit productsCubit;
 
   @override
   void initState() {
     super.initState();
     cartCubit = context.read<CartCubit>();
     clientCubit = context.read<ClientCubit>();
+    productsCubit = context.read<ProductsCubit>();
   }
 
   //slider
@@ -43,14 +48,11 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final HomeProductsModel model = HomeProductsModel(
-        categoryTitle: "Most Popular", products: mostPopular.products);
+    final HomeProductsModel model = HomeProductsModel(categoryTitle: "Most Popular", products: mostPopular.products);
     return Scaffold(
       extendBodyBehindAppBar: false,
       appBar: AppBar(
-        backgroundColor: Theme.of(context).brightness == Brightness.dark
-            ? Colors.grey[1000]
-            : Colors.white,
+        backgroundColor: Theme.of(context).brightness == Brightness.dark ? Colors.grey[1000] : Colors.white,
         leading: Padding(
           padding: const EdgeInsets.only(left: 16.0),
           child: CircleAvatar(
@@ -65,9 +67,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 Text(
                   'Good Morning',
                   style: TextStyle(
-                    color: Theme.of(context).brightness == Brightness.dark
-                        ? Colors.white
-                        : Colors.black54,
+                    color: Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black54,
                     fontSize: 12,
                   ),
                 ),
@@ -82,8 +82,7 @@ class _HomeScreenState extends State<HomeScreen> {
             SizedBox(height: 5),
             Text(
               'Eva Holt',
-              style: GoogleFonts.poppins(
-                  fontSize: 14, fontWeight: FontWeight.bold),
+              style: GoogleFonts.poppins(fontSize: 14, fontWeight: FontWeight.bold),
             ),
           ],
         ),
@@ -97,6 +96,10 @@ class _HomeScreenState extends State<HomeScreen> {
           IconButton(
             icon: Icon(Icons.favorite_border_outlined, size: 20.0),
             onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const FavoritesScreen()),
+              );
               // Favoriler sayfasına yönlendirme
             },
           ),
@@ -112,30 +115,21 @@ class _HomeScreenState extends State<HomeScreen> {
                 height: 52,
                 child: TextField(
                   style: TextStyle(
-                    color: Theme.of(context).brightness == Brightness.dark
-                        ? Colors.white
-                        : Colors.black45,
+                    color: Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black45,
                   ),
                   decoration: InputDecoration(
                     filled: true,
-                    fillColor: Theme.of(context).brightness == Brightness.dark
-                        ? Color.fromARGB(255, 50, 50, 50)
-                        : Color.fromARGB(255, 244, 243, 243),
+                    fillColor: Theme.of(context).brightness == Brightness.dark ? Color.fromARGB(255, 50, 50, 50) : Color.fromARGB(255, 244, 243, 243),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15.0),
                       borderSide: BorderSide.none,
                     ),
                     hintText: "Search",
                     hintStyle: TextStyle(
-                      color: Theme.of(context).brightness == Brightness.dark
-                          ? Colors.white
-                          : Colors.black26,
+                      color: Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black26,
                     ),
                     prefixIcon: Icon(Icons.search),
-                    prefixIconColor:
-                        Theme.of(context).brightness == Brightness.dark
-                            ? Color.fromARGB(255, 244, 243, 243)
-                            : Color.fromARGB(255, 50, 50, 50),
+                    prefixIconColor: Theme.of(context).brightness == Brightness.dark ? Color.fromARGB(255, 244, 243, 243) : Color.fromARGB(255, 50, 50, 50),
                     suffixIcon: Icon(
                       Icons.tune,
                       size: 20,
@@ -151,18 +145,15 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   Text(
                     //dil desteğinde böyle tanımlanıcak ancak lang yazısı çıkmamalı
-                   //AppLocalizations.of(context).getTranslate("Spesiyal"),
+                    //AppLocalizations.of(context).getTranslate("Spesiyal"),
                     'Special Offers',
-                    style: GoogleFonts.poppins(
-                        fontSize: 15, fontWeight: FontWeight.bold),
+                    style: GoogleFonts.poppins(fontSize: 15, fontWeight: FontWeight.bold),
                   ),
                   Text(
                     'See All',
                     style: GoogleFonts.poppins(
                       fontSize: 12,
-                      color: Theme.of(context).brightness == Brightness.dark
-                          ? Colors.white
-                          : Colors.black54,
+                      color: Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black54,
                     ),
                   ),
                 ],
@@ -173,8 +164,7 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 CarouselSlider.builder(
                   itemCount: images.length,
-                  itemBuilder:
-                      (BuildContext context, int index, int realIndex) {
+                  itemBuilder: (BuildContext context, int index, int realIndex) {
                     return Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Container(
@@ -219,13 +209,10 @@ class _HomeScreenState extends State<HomeScreen> {
                       return Container(
                         width: 3.0,
                         height: 3.0,
-                        margin: EdgeInsets.symmetric(
-                            vertical: 10.0, horizontal: 2.0),
+                        margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          color: _currentImageIndex == index
-                              ? Colors.black
-                              : Colors.grey,
+                          color: _currentImageIndex == index ? Colors.black : Colors.grey,
                         ),
                       );
                     }).toList(),
@@ -248,16 +235,10 @@ class _HomeScreenState extends State<HomeScreen> {
                           children: [
                             CircleAvatar(
                               radius: 28,
-                              backgroundColor: Theme.of(context).brightness ==
-                                      Brightness.dark
-                                  ? Colors.black54
-                                  :  Color.fromARGB(255, 238, 238, 238),
+                              backgroundColor: Theme.of(context).brightness == Brightness.dark ? Colors.black54 : Color.fromARGB(255, 238, 238, 238),
                               child: Icon(
                                 Icons.chair_outlined,
-                                color: Theme.of(context).brightness ==
-                                        Brightness.dark
-                                    ? Colors.white
-                                    : Colors.black,
+                                color: Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black,
                               ),
                             ),
                             Gap(3),
@@ -279,23 +260,16 @@ class _HomeScreenState extends State<HomeScreen> {
                             children: [
                               CircleAvatar(
                                 radius: 30,
-                                backgroundColor: Theme.of(context).brightness ==
-                                        Brightness.dark
-                                    ? Colors.black54
-                                    : Color.fromARGB(255, 238, 238, 238),
+                                backgroundColor: Theme.of(context).brightness == Brightness.dark ? Colors.black54 : Color.fromARGB(255, 238, 238, 238),
                                 child: Icon(
                                   Icons.chair_alt,
-                                  color: Theme.of(context).brightness ==
-                                          Brightness.dark
-                                      ? Colors.white
-                                      : Colors.black,
+                                  color: Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black,
                                 ),
                               ),
                               Gap(3),
                               Text(
                                 "Chair",
-                                style: GoogleFonts.poppins(
-                                    fontWeight: FontWeight.bold, fontSize: 11),
+                                style: GoogleFonts.poppins(fontWeight: FontWeight.bold, fontSize: 11),
                               ),
                             ],
                           ),
@@ -309,23 +283,16 @@ class _HomeScreenState extends State<HomeScreen> {
                             children: [
                               CircleAvatar(
                                 radius: 30,
-                                backgroundColor: Theme.of(context).brightness ==
-                                        Brightness.dark
-                                    ? Colors.black54
-                                    :  Color.fromARGB(255, 238, 238, 238),
+                                backgroundColor: Theme.of(context).brightness == Brightness.dark ? Colors.black54 : Color.fromARGB(255, 238, 238, 238),
                                 child: Icon(
                                   Icons.table_bar_outlined,
-                                  color: Theme.of(context).brightness ==
-                                          Brightness.dark
-                                      ? Colors.white
-                                      : Colors.black,
+                                  color: Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black,
                                 ),
                               ),
                               Gap(3),
                               Text(
                                 "Table",
-                                style: GoogleFonts.poppins(
-                                    fontWeight: FontWeight.bold, fontSize: 11),
+                                style: GoogleFonts.poppins(fontWeight: FontWeight.bold, fontSize: 11),
                               ),
                             ],
                           ),
@@ -339,23 +306,16 @@ class _HomeScreenState extends State<HomeScreen> {
                             children: [
                               CircleAvatar(
                                 radius: 30,
-                                backgroundColor: Theme.of(context).brightness ==
-                                        Brightness.dark
-                                    ? Colors.black54
-                                    :  Color.fromARGB(255, 238, 238, 238),
+                                backgroundColor: Theme.of(context).brightness == Brightness.dark ? Colors.black54 : Color.fromARGB(255, 238, 238, 238),
                                 child: Icon(
                                   Icons.kitchen_outlined,
-                                  color: Theme.of(context).brightness ==
-                                          Brightness.dark
-                                      ? Colors.white
-                                      : Colors.black,
+                                  color: Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black,
                                 ),
                               ),
                               Gap(3),
                               Text(
                                 "Kitchen",
-                                style: GoogleFonts.poppins(
-                                    fontWeight: FontWeight.bold, fontSize: 11),
+                                style: GoogleFonts.poppins(fontWeight: FontWeight.bold, fontSize: 11),
                               ),
                             ],
                           ),
@@ -373,23 +333,16 @@ class _HomeScreenState extends State<HomeScreen> {
                             children: [
                               CircleAvatar(
                                 radius: 30,
-                                backgroundColor: Theme.of(context).brightness ==
-                                        Brightness.dark
-                                    ? Colors.black54
-                                    :  Color.fromARGB(255, 238, 238, 238),
+                                backgroundColor: Theme.of(context).brightness == Brightness.dark ? Colors.black54 : Color.fromARGB(255, 238, 238, 238),
                                 child: Icon(
                                   Icons.light,
-                                  color: Theme.of(context).brightness ==
-                                          Brightness.dark
-                                      ? Colors.white
-                                      : Colors.black,
+                                  color: Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black,
                                 ),
                               ),
                               Gap(3),
                               Text(
                                 "Lamp",
-                                style: GoogleFonts.poppins(
-                                    fontWeight: FontWeight.bold, fontSize: 11),
+                                style: GoogleFonts.poppins(fontWeight: FontWeight.bold, fontSize: 11),
                               ),
                             ],
                           ),
@@ -403,23 +356,16 @@ class _HomeScreenState extends State<HomeScreen> {
                             children: [
                               CircleAvatar(
                                 radius: 30,
-                                backgroundColor: Theme.of(context).brightness ==
-                                        Brightness.dark
-                                    ? Colors.black54
-                                    :  Color.fromARGB(255, 238, 238, 238),
+                                backgroundColor: Theme.of(context).brightness == Brightness.dark ? Colors.black54 : Color.fromARGB(255, 238, 238, 238),
                                 child: Icon(
                                   Icons.shelves,
-                                  color: Theme.of(context).brightness ==
-                                          Brightness.dark
-                                      ? Colors.white
-                                      : Colors.black,
+                                  color: Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black,
                                 ),
                               ),
                               Gap(3),
                               Text(
                                 "Cupboard",
-                                style: GoogleFonts.poppins(
-                                    fontWeight: FontWeight.bold, fontSize: 11),
+                                style: GoogleFonts.poppins(fontWeight: FontWeight.bold, fontSize: 11),
                               ),
                             ],
                           ),
@@ -433,23 +379,16 @@ class _HomeScreenState extends State<HomeScreen> {
                             children: [
                               CircleAvatar(
                                 radius: 30,
-                                backgroundColor: Theme.of(context).brightness ==
-                                        Brightness.dark
-                                    ? Colors.black54
-                                    :  Color.fromARGB(255, 238, 238, 238),
+                                backgroundColor: Theme.of(context).brightness == Brightness.dark ? Colors.black54 : Color.fromARGB(255, 238, 238, 238),
                                 child: Icon(
                                   Icons.local_florist_outlined,
-                                  color: Theme.of(context).brightness ==
-                                          Brightness.dark
-                                      ? Colors.white
-                                      : Colors.black,
+                                  color: Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black,
                                 ),
                               ),
                               Gap(3),
                               Text(
                                 "Vase",
-                                style: GoogleFonts.poppins(
-                                    fontWeight: FontWeight.bold, fontSize: 11),
+                                style: GoogleFonts.poppins(fontWeight: FontWeight.bold, fontSize: 11),
                               ),
                             ],
                           ),
@@ -463,23 +402,16 @@ class _HomeScreenState extends State<HomeScreen> {
                             children: [
                               CircleAvatar(
                                 radius: 30,
-                                backgroundColor: Theme.of(context).brightness ==
-                                        Brightness.dark
-                                    ? Colors.black54
-                                    : Colors.white,
+                                backgroundColor: Theme.of(context).brightness == Brightness.dark ? Colors.black54 : Colors.white,
                                 child: Icon(
                                   Icons.pending_outlined,
-                                  color: Theme.of(context).brightness ==
-                                          Brightness.dark
-                                      ? Colors.white
-                                      : Colors.black,
+                                  color: Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black,
                                 ),
                               ),
                               Gap(3),
                               Text(
                                 "Others",
-                                style: GoogleFonts.poppins(
-                                    fontWeight: FontWeight.bold, fontSize: 11),
+                                style: GoogleFonts.poppins(fontWeight: FontWeight.bold, fontSize: 11),
                               ),
                             ],
                           ),
@@ -498,16 +430,13 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   Text(
                     'Most Popular',
-                    style: GoogleFonts.poppins(
-                        fontSize: 15, fontWeight: FontWeight.bold),
+                    style: GoogleFonts.poppins(fontSize: 15, fontWeight: FontWeight.bold),
                   ),
                   Text(
                     'See All',
                     style: GoogleFonts.poppins(
                       fontSize: 12,
-                      color: Theme.of(context).brightness == Brightness.dark
-                          ? Colors.white
-                          : Colors.black,
+                      color: Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black,
                     ),
                   ),
                 ],
@@ -525,32 +454,43 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget homeProductCategories(HomeProductsModel model) {
-    return Column(
+    return GridView.count(
+      shrinkWrap: true,
+      crossAxisCount: 2,
+      childAspectRatio: 0.55,
       children: List.generate(
-        (model.products.length / 2).ceil(),
+        model.products.length,
         (index) {
-          int startIndex = index * 2;
-          int endIndex = startIndex + 2;
-          if (endIndex > model.products.length) {
-            endIndex = model.products.length;
-          }
-          return Row(
-            children: List.generate(
-              endIndex - startIndex,
-              (i) {
-                return Expanded(
-                  child: SizedBox(
-                    height: 250,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: ProductCard(
-                        product: model.products[startIndex + i],
-                      ),
-                    ),
-                  ),
-                );
-              },
-            ),
+          return ProductCard(
+            functionOnTapFavorite: () {
+              Map<String, dynamic> productMap = {
+                "id": model.products[index].id,
+                "name": model.products[index].name,
+                "photo": model.products[index].photo,
+                "icon": model.products[index].icon,
+                "price": model.products[index].price,
+                "puan": model.products[index].puan,
+                "tire": model.products[index].tire,
+                "sold": model.products[index].sold,
+                "descTitle": model.products[index].descTitle,
+                "descDetail": model.products[index].descDetail,
+                "colors": model.products[index].colors,
+                "isFavorite": model.products[index].isFavorite,
+              };
+              if (model.products[index].isFavorite == false) {
+                model.products[index].isFavorite = true;
+                productsCubit.addToFavorites(productMap);
+              } else if (model.products[index].isFavorite == true) {
+                model.products[index].isFavorite = false;
+                productsCubit.removeFromFavorites(model.products[index].id);
+              }
+
+              setState(() {});
+            },
+            product: model.products[index],
+            onTap: () {
+              cartCubit.sepeteEkle(id: model.products[index].id, ad: model.products[index].name, sayi: 1, fiyat: model.products[index].price, gorsel: model.products[index].photo);
+            },
           );
         },
       ),
@@ -573,25 +513,16 @@ class _HomeScreenState extends State<HomeScreen> {
                 height: 35,
                 padding: EdgeInsets.all(10),
                 decoration: BoxDecoration(
-                  color: Theme.of(context).brightness == Brightness.dark
-                      ? Colors.white
-                      : Colors.black,
+                  color: Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black,
                   border: Border.all(
-                    color: Theme.of(context).brightness == Brightness.dark
-                        ? Colors.black
-                        : Colors.white,
+                    color: Theme.of(context).brightness == Brightness.dark ? Colors.black : Colors.white,
                   ),
                   borderRadius: BorderRadius.circular(15),
                 ),
                 child: Center(
                   child: Text(
                     "All",
-                    style: GoogleFonts.poppins(
-                        fontSize: 10,
-                        color: Theme.of(context).brightness == Brightness.dark
-                            ? Colors.black
-                            : Colors.white,
-                        fontWeight: FontWeight.bold),
+                    style: GoogleFonts.poppins(fontSize: 10, color: Theme.of(context).brightness == Brightness.dark ? Colors.black : Colors.white, fontWeight: FontWeight.bold),
                   ),
                 ),
               ),
@@ -606,25 +537,16 @@ class _HomeScreenState extends State<HomeScreen> {
                 height: 35,
                 padding: EdgeInsets.all(10),
                 decoration: BoxDecoration(
-                  color: Theme.of(context).brightness == Brightness.dark
-                      ? Colors.black
-                      : Colors.white,
+                  color: Theme.of(context).brightness == Brightness.dark ? Colors.black : Colors.white,
                   border: Border.all(
-                    color: Theme.of(context).brightness == Brightness.dark
-                        ? Colors.white
-                        : Colors.black,
+                    color: Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black,
                   ),
                   borderRadius: BorderRadius.circular(15),
                 ),
                 child: Center(
                   child: Text(
                     "Sofa",
-                    style: GoogleFonts.poppins(
-                        fontSize: 10,
-                        color: Theme.of(context).brightness == Brightness.dark
-                            ? Colors.white
-                            : Colors.black,
-                        fontWeight: FontWeight.bold),
+                    style: GoogleFonts.poppins(fontSize: 10, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black, fontWeight: FontWeight.bold),
                   ),
                 ),
               ),
@@ -639,25 +561,16 @@ class _HomeScreenState extends State<HomeScreen> {
                 height: 35,
                 padding: EdgeInsets.all(10),
                 decoration: BoxDecoration(
-                  color: Theme.of(context).brightness == Brightness.dark
-                      ? Colors.black
-                      : Colors.white,
+                  color: Theme.of(context).brightness == Brightness.dark ? Colors.black : Colors.white,
                   border: Border.all(
-                    color: Theme.of(context).brightness == Brightness.dark
-                        ? Colors.white
-                        : Colors.black,
+                    color: Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black,
                   ),
                   borderRadius: BorderRadius.circular(15),
                 ),
                 child: Center(
                   child: Text(
                     "Chair",
-                    style: GoogleFonts.poppins(
-                        fontSize: 10,
-                        color: Theme.of(context).brightness == Brightness.dark
-                            ? Colors.white
-                            : Colors.black,
-                        fontWeight: FontWeight.bold),
+                    style: GoogleFonts.poppins(fontSize: 10, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black, fontWeight: FontWeight.bold),
                   ),
                 ),
               ),
@@ -672,25 +585,16 @@ class _HomeScreenState extends State<HomeScreen> {
                 height: 35,
                 padding: EdgeInsets.all(10),
                 decoration: BoxDecoration(
-                  color: Theme.of(context).brightness == Brightness.dark
-                      ? Colors.black
-                      : Colors.white,
+                  color: Theme.of(context).brightness == Brightness.dark ? Colors.black : Colors.white,
                   border: Border.all(
-                    color: Theme.of(context).brightness == Brightness.dark
-                        ? Colors.white
-                        : Colors.black,
+                    color: Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black,
                   ),
                   borderRadius: BorderRadius.circular(15),
                 ),
                 child: Center(
                   child: Text(
                     "Table",
-                    style: GoogleFonts.poppins(
-                        fontSize: 10,
-                        color: Theme.of(context).brightness == Brightness.dark
-                            ? Colors.white
-                            : Colors.black,
-                        fontWeight: FontWeight.bold),
+                    style: GoogleFonts.poppins(fontSize: 10, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black, fontWeight: FontWeight.bold),
                   ),
                 ),
               ),
@@ -705,25 +609,16 @@ class _HomeScreenState extends State<HomeScreen> {
                 height: 35,
                 padding: EdgeInsets.all(10),
                 decoration: BoxDecoration(
-                  color: Theme.of(context).brightness == Brightness.dark
-                      ? Colors.black
-                      : Colors.white,
+                  color: Theme.of(context).brightness == Brightness.dark ? Colors.black : Colors.white,
                   border: Border.all(
-                    color: Theme.of(context).brightness == Brightness.dark
-                        ? Colors.white
-                        : Colors.black,
+                    color: Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black,
                   ),
                   borderRadius: BorderRadius.circular(15),
                 ),
                 child: Center(
                   child: Text(
                     "Kitchen",
-                    style: GoogleFonts.poppins(
-                        fontSize: 10,
-                        color: Theme.of(context).brightness == Brightness.dark
-                            ? Colors.white
-                            : Colors.black,
-                        fontWeight: FontWeight.bold),
+                    style: GoogleFonts.poppins(fontSize: 10, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black, fontWeight: FontWeight.bold),
                   ),
                 ),
               ),
@@ -738,25 +633,16 @@ class _HomeScreenState extends State<HomeScreen> {
                 height: 35,
                 padding: EdgeInsets.all(10),
                 decoration: BoxDecoration(
-                  color: Theme.of(context).brightness == Brightness.dark
-                      ? Colors.black
-                      : Colors.white,
+                  color: Theme.of(context).brightness == Brightness.dark ? Colors.black : Colors.white,
                   border: Border.all(
-                    color: Theme.of(context).brightness == Brightness.dark
-                        ? Colors.white
-                        : Colors.black,
+                    color: Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black,
                   ),
                   borderRadius: BorderRadius.circular(15),
                 ),
                 child: Center(
                   child: Text(
                     "Lamp",
-                    style: GoogleFonts.poppins(
-                        fontSize: 10,
-                        color: Theme.of(context).brightness == Brightness.dark
-                            ? Colors.white
-                            : Colors.black,
-                        fontWeight: FontWeight.bold),
+                    style: GoogleFonts.poppins(fontSize: 10, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black, fontWeight: FontWeight.bold),
                   ),
                 ),
               ),
@@ -771,25 +657,16 @@ class _HomeScreenState extends State<HomeScreen> {
                 height: 35,
                 padding: EdgeInsets.all(10),
                 decoration: BoxDecoration(
-                  color: Theme.of(context).brightness == Brightness.dark
-                      ? Colors.black
-                      : Colors.white,
+                  color: Theme.of(context).brightness == Brightness.dark ? Colors.black : Colors.white,
                   border: Border.all(
-                    color: Theme.of(context).brightness == Brightness.dark
-                        ? Colors.white
-                        : Colors.black,
+                    color: Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black,
                   ),
                   borderRadius: BorderRadius.circular(15),
                 ),
                 child: Center(
                   child: Text(
                     "Cupboard",
-                    style: GoogleFonts.poppins(
-                        fontSize: 9,
-                        color: Theme.of(context).brightness == Brightness.dark
-                            ? Colors.white
-                            : Colors.black,
-                        fontWeight: FontWeight.bold),
+                    style: GoogleFonts.poppins(fontSize: 9, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black, fontWeight: FontWeight.bold),
                   ),
                 ),
               ),
@@ -804,25 +681,16 @@ class _HomeScreenState extends State<HomeScreen> {
                 height: 35,
                 padding: EdgeInsets.all(10),
                 decoration: BoxDecoration(
-                  color: Theme.of(context).brightness == Brightness.dark
-                      ? Colors.black
-                      : Colors.white,
+                  color: Theme.of(context).brightness == Brightness.dark ? Colors.black : Colors.white,
                   border: Border.all(
-                    color: Theme.of(context).brightness == Brightness.dark
-                        ? Colors.white
-                        : Colors.black,
+                    color: Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black,
                   ),
                   borderRadius: BorderRadius.circular(15),
                 ),
                 child: Center(
                   child: Text(
                     "Vase",
-                    style: GoogleFonts.poppins(
-                        fontSize: 10,
-                        color: Theme.of(context).brightness == Brightness.dark
-                            ? Colors.white
-                            : Colors.black,
-                        fontWeight: FontWeight.bold),
+                    style: GoogleFonts.poppins(fontSize: 10, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black, fontWeight: FontWeight.bold),
                   ),
                 ),
               ),
