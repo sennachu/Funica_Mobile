@@ -150,6 +150,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
+                    //dil desteğinde böyle tanımlanıcak ancak lang yazısı çıkmamalı
+                   //AppLocalizations.of(context).getTranslate("Spesiyal"),
                     'Special Offers',
                     style: GoogleFonts.poppins(
                         fontSize: 15, fontWeight: FontWeight.bold),
@@ -249,7 +251,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               backgroundColor: Theme.of(context).brightness ==
                                       Brightness.dark
                                   ? Colors.black54
-                                  : Colors.white,
+                                  :  Color.fromARGB(255, 238, 238, 238),
                               child: Icon(
                                 Icons.chair_outlined,
                                 color: Theme.of(context).brightness ==
@@ -280,7 +282,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 backgroundColor: Theme.of(context).brightness ==
                                         Brightness.dark
                                     ? Colors.black54
-                                    : Colors.white,
+                                    : Color.fromARGB(255, 238, 238, 238),
                                 child: Icon(
                                   Icons.chair_alt,
                                   color: Theme.of(context).brightness ==
@@ -310,7 +312,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 backgroundColor: Theme.of(context).brightness ==
                                         Brightness.dark
                                     ? Colors.black54
-                                    : Colors.white,
+                                    :  Color.fromARGB(255, 238, 238, 238),
                                 child: Icon(
                                   Icons.table_bar_outlined,
                                   color: Theme.of(context).brightness ==
@@ -340,7 +342,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 backgroundColor: Theme.of(context).brightness ==
                                         Brightness.dark
                                     ? Colors.black54
-                                    : Colors.white,
+                                    :  Color.fromARGB(255, 238, 238, 238),
                                 child: Icon(
                                   Icons.kitchen_outlined,
                                   color: Theme.of(context).brightness ==
@@ -374,7 +376,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 backgroundColor: Theme.of(context).brightness ==
                                         Brightness.dark
                                     ? Colors.black54
-                                    : Colors.white,
+                                    :  Color.fromARGB(255, 238, 238, 238),
                                 child: Icon(
                                   Icons.light,
                                   color: Theme.of(context).brightness ==
@@ -404,7 +406,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 backgroundColor: Theme.of(context).brightness ==
                                         Brightness.dark
                                     ? Colors.black54
-                                    : Colors.white,
+                                    :  Color.fromARGB(255, 238, 238, 238),
                                 child: Icon(
                                   Icons.shelves,
                                   color: Theme.of(context).brightness ==
@@ -434,7 +436,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 backgroundColor: Theme.of(context).brightness ==
                                         Brightness.dark
                                     ? Colors.black54
-                                    : Colors.white,
+                                    :  Color.fromARGB(255, 238, 238, 238),
                                 child: Icon(
                                   Icons.local_florist_outlined,
                                   color: Theme.of(context).brightness ==

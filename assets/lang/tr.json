@@ -1,0 +1,29 @@
+{
+    "Koltuk" : "Sofa",
+    "Sandalye":"Chair",
+    "Masa": "Table",
+    "Koltuk" :"Kitchen",
+    "Işık":"Lamp",
+    "Raflık":"Cupboard",
+    "Vazo":"Vase",
+    "Diğer":"Others",
+    "Sandalye": "Chair",
+    "Spesiyal": "Special Offers",
+
+
+    "home_title": "E-Ticaret Uygulamam",
+    "add_to_basket": "Sepete Ekle",
+    "products": "Urunler",
+    "favorites": "Favoriler",
+    "cart": "Sepet",
+    "in-stock": "Mevcut",
+    "not-available": "Tukendi",
+    "added-to-cart": "Urun Sepete Eklendi.",
+    "remove-favorite": "Favoriden Kaldir",
+    "remove-cart": "Sepetten Kaldir",
+    "cart-empty": "Sepetinizde hic urun bulunmamaktadir.",
+    "settings": "Ayarlar",
+    "connection-error": "Lutfen Internet Baglantinizi Kontrol Ediniz.",
+    "reload": "Yenile",
+    "select-language": "Lutfen Istediginiz Dili Seciniz:"
+}

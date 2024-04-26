@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:funica_mobile/bloc/cart/cart_cubit.dart';
 
 import 'bloc/client/client_cubit.dart';
+import 'core/locazilations.dart';
 import 'core/routes.dart';
 import 'core/themess.dart';
 
@@ -33,6 +35,17 @@ class MainApp extends StatelessWidget {
            themeMode: state.darkMode ? ThemeMode.dark : ThemeMode.light,
           theme: lightTheme,
           darkTheme: darkTheme,
+          localizationsDelegates: const [
+            AppLocalizations.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+          ],
+           supportedLocales: const [
+            Locale('en', 'US'),
+            Locale('tr', 'TR'),
+          ],
+          locale: Locale(state.language),
          );
       }),
     );
