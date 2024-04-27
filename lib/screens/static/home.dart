@@ -448,7 +448,16 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
-      
+       bottomNavigationBar: BottomNavigator(selectedIndex: 0),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          GoRouter.of(context).go('/chat');
+        },
+        child: Icon(Icons.sms_outlined,
+        color: Colors.white,),
+        backgroundColor: Color.fromARGB(255, 21, 54, 81),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
 
     );
   }

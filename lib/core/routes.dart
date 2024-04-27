@@ -1,9 +1,9 @@
-import 'package:funica_mobile/ChatBot/chatBot.dart';
+import 'package:funica_mobile/chatsBot/chatBot.dart';
 import 'package:funica_mobile/model/product_detail.dart';
 import 'package:funica_mobile/screens/user_login_screen/letyouin.dart';
 import 'package:funica_mobile/screens/product/chair.dart';
 import 'package:go_router/go_router.dart';
-import 'package:funica_mobile/ChatBot/chatBot.dart';
+import 'package:funica_mobile/chatsBot/chatBot.dart';
 
 import '../screens/user_login_screen/login.dart';
 import '../screens/user_login_screen/profile.dart';
