@@ -27,7 +27,8 @@ class _ProductDetailState extends State<ProductDetail> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ProductsCubit, ProductsState>(builder: (context, state2) {
+    return BlocBuilder<ProductsCubit, ProductsState>(
+        builder: (context, state2) {
       return BlocBuilder<CartCubit, CartState>(builder: (context, state) {
         return Scaffold(
           body: Stack(
@@ -38,7 +39,6 @@ class _ProductDetailState extends State<ProductDetail> {
                   subDetail(),
                   title(context),
                   colors(),
-                 
                 ],
               ),
               appbar(context)
@@ -64,8 +64,8 @@ class _ProductDetailState extends State<ProductDetail> {
             widget.product.descDetail,
             style: TextStyle(
               fontFamily: GoogleFonts.poppins().fontFamily,
-              fontSize: Theme.of(context).textTheme.caption?.fontSize,
-              fontWeight: Theme.of(context).textTheme.caption?.fontWeight,
+              fontSize: Theme.of(context).textTheme.bodySmall?.fontSize,
+              fontWeight: Theme.of(context).textTheme.bodySmall?.fontWeight,
             ),
           ),
         ],
@@ -138,7 +138,11 @@ class _ProductDetailState extends State<ProductDetail> {
   Padding subDetail() {
     return Padding(
       padding: [20, 20, 20, 0].paddingLTRB,
-      child: Text(widget.product.name, style: TextStyle(fontFamily: GoogleFonts.poppins().fontFamily, fontSize: 22, fontWeight: FontWeight.bold)),
+      child: Text(widget.product.name,
+          style: TextStyle(
+              fontFamily: GoogleFonts.poppins().fontFamily,
+              fontSize: 22,
+              fontWeight: FontWeight.bold)),
     );
   }
 

@@ -24,7 +24,7 @@ import '../screens/profile_sec/help.dart';
 
 import '../screens/profile_sec/language.dart';
 import '../screens/profile_sec/notification.dart';
-import '../screens/profile_sec/payment.dart';
+import '../screens/static/wallet.dart';
 import '../screens/profile_sec/privacy.dart';
 import '../screens/profile_sec/security.dart';
 import '../screens/static/boarding.dart';
@@ -89,7 +89,7 @@ final routes = GoRouter(
     ),
     GoRoute(
       path: '/wallet',
-      builder: (context, state) => const WalletScreen(),
+      builder: (context, state) => const PaymentScreen(),
     ),
     GoRoute(
       path: '/sofa',
@@ -135,10 +135,7 @@ final routes = GoRouter(
       path: '/notification',
       builder: (context, state) => const NotificationScreen(),
     ),
-    GoRoute(
-      path: '/payment',
-      builder: (context, state) => const PaymentScreen(),
-    ),
+
     GoRoute(
       path: '/security',
       builder: (context, state) => const SecurityScreen(),

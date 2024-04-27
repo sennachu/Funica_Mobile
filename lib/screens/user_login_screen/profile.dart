@@ -287,40 +287,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   Gap(20),
                   GestureDetector(
                       onTap: () {
-                        GoRouter.of(context).go('/payment');
-                      },
-                      child: Row(
-                        children: [
-                          Icon(
-                            Icons.wallet_outlined,
-                            size: 20,
-                            color: Theme.of(context).brightness == Brightness.dark
-                                ? Colors.white
-                                : Colors.black,
-                          ),
-                          Gap(5),
-                          Text(
-                            "Payment",
-                            style: GoogleFonts.poppins(
-                              fontSize: 15,
-                              color: Theme.of(context).brightness == Brightness.dark
-                                  ? Colors.white
-                                  : Colors.black,
-                            ),
-                          ),
-                          Gap(246),
-                          Icon(
-                            Icons.arrow_forward_ios,
-                            color: Theme.of(context).brightness == Brightness.dark
-                                ? Colors.white
-                                : Colors.black,
-                            size: 15,
-                          ),
-                        ],
-                      )),
-                  Gap(20),
-                  GestureDetector(
-                      onTap: () {
                         GoRouter.of(context).go('/security');
                       },
                       child: Row(

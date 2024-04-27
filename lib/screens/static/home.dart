@@ -450,6 +450,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
       bottomNavigationBar: BottomNavigator(selectedIndex: 0),
+
     );
   }
 
