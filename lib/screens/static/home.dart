@@ -70,7 +70,7 @@ class _HomeScreenState extends State<HomeScreen> {
             Row(
               children: [
                 Text(
-                  'Good Morning',
+                  AppLocalizations.of(context).getTranslate("Good Morning"),
                   style: TextStyle(
                     color: Theme.of(context).brightness == Brightness.dark
                         ? Colors.white
@@ -184,7 +184,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         fontSize: 15, fontWeight: FontWeight.bold),
                   ),
                   Text(
-                    'See All',
+                    AppLocalizations.of(context).getTranslate("Hepsini Gör"),
                     style: GoogleFonts.poppins(
                       fontSize: 12,
                       color: Theme.of(context).brightness == Brightness.dark
@@ -289,7 +289,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                             Gap(3),
                             Text(
-                              "Sofa",
+                              AppLocalizations.of(context).getTranslate("Koltuk"),
                               style: GoogleFonts.poppins(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 11,
@@ -320,7 +320,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                               Gap(3),
                               Text(
-                                "Chair",
+                                  AppLocalizations.of(context).getTranslate("Sandalye"),
                                 style: GoogleFonts.poppins(
                                     fontWeight: FontWeight.bold, fontSize: 11),
                               ),
@@ -350,7 +350,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                               Gap(3),
                               Text(
-                                "Table",
+                                  AppLocalizations.of(context).getTranslate("Masa"),
                                 style: GoogleFonts.poppins(
                                     fontWeight: FontWeight.bold, fontSize: 11),
                               ),
@@ -380,7 +380,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                               Gap(3),
                               Text(
-                                "Kitchen",
+                                AppLocalizations.of(context).getTranslate("Mutfak"),
                                 style: GoogleFonts.poppins(
                                     fontWeight: FontWeight.bold, fontSize: 11),
                               ),
@@ -414,7 +414,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                               Gap(3),
                               Text(
-                                "Lamp",
+                                AppLocalizations.of(context).getTranslate("Işık"),
                                 style: GoogleFonts.poppins(
                                     fontWeight: FontWeight.bold, fontSize: 11),
                               ),
@@ -444,7 +444,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                               Gap(3),
                               Text(
-                                "Cupboard",
+                                AppLocalizations.of(context).getTranslate("Raflık"),
                                 style: GoogleFonts.poppins(
                                     fontWeight: FontWeight.bold, fontSize: 11),
                               ),
@@ -474,7 +474,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                               Gap(3),
                               Text(
-                                "Vase",
+                                AppLocalizations.of(context).getTranslate("Vazo"),
                                 style: GoogleFonts.poppins(
                                     fontWeight: FontWeight.bold, fontSize: 11),
                               ),
@@ -504,7 +504,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                               Gap(3),
                               Text(
-                                "Others",
+                                AppLocalizations.of(context).getTranslate("Diğer"),
                                 style: GoogleFonts.poppins(
                                     fontWeight: FontWeight.bold, fontSize: 11),
                               ),
@@ -524,12 +524,12 @@ class _HomeScreenState extends State<HomeScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'Most Popular',
+                    AppLocalizations.of(context).getTranslate("Popüler"),
                     style: GoogleFonts.poppins(
                         fontSize: 15, fontWeight: FontWeight.bold),
                   ),
                   Text(
-                    'See All',
+                    AppLocalizations.of(context).getTranslate("Hepsini Gör"),
                     style: GoogleFonts.poppins(
                       fontSize: 12,
                       color: Theme.of(context).brightness == Brightness.dark
@@ -639,7 +639,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 child: Center(
                   child: Text(
-                    "All",
+                    AppLocalizations.of(context).getTranslate("Hepsi"),
                     style: GoogleFonts.poppins(
                         fontSize: 10,
                         color: Theme.of(context).brightness == Brightness.dark
@@ -672,7 +672,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 child: Center(
                   child: Text(
-                    "Sofa",
+                    AppLocalizations.of(context).getTranslate("Koltuk"),
                     style: GoogleFonts.poppins(
                         fontSize: 10,
                         color: Theme.of(context).brightness == Brightness.dark
@@ -705,7 +705,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 child: Center(
                   child: Text(
-                    "Chair",
+                    AppLocalizations.of(context).getTranslate("Sandalye"),
                     style: GoogleFonts.poppins(
                         fontSize: 10,
                         color: Theme.of(context).brightness == Brightness.dark
@@ -738,7 +738,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 child: Center(
                   child: Text(
-                    "Table",
+                    AppLocalizations.of(context).getTranslate("Masa"),
                     style: GoogleFonts.poppins(
                         fontSize: 10,
                         color: Theme.of(context).brightness == Brightness.dark
@@ -771,7 +771,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 child: Center(
                   child: Text(
-                    "Kitchen",
+                    AppLocalizations.of(context).getTranslate("Mutfak"),
                     style: GoogleFonts.poppins(
                         fontSize: 10,
                         color: Theme.of(context).brightness == Brightness.dark
@@ -804,7 +804,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 child: Center(
                   child: Text(
-                    "Lamp",
+                    AppLocalizations.of(context).getTranslate("Işık"),
                     style: GoogleFonts.poppins(
                         fontSize: 10,
                         color: Theme.of(context).brightness == Brightness.dark
@@ -837,7 +837,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 child: Center(
                   child: Text(
-                    "Cupboard",
+                    AppLocalizations.of(context).getTranslate("Raflık"),
                     style: GoogleFonts.poppins(
                         fontSize: 9,
                         color: Theme.of(context).brightness == Brightness.dark
@@ -870,7 +870,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 child: Center(
                   child: Text(
-                    "Vase",
+                    AppLocalizations.of(context).getTranslate("Vazo"),
                     style: GoogleFonts.poppins(
                         fontSize: 10,
                         color: Theme.of(context).brightness == Brightness.dark

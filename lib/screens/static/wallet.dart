@@ -256,7 +256,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                       Positioned(
                           left: 20,
                           top: 50,
-                          child: Text(cards[index].title,style: GoogleFonts.poppins(fontSize: 14,))),
+                          child: Text(cards[index].cardNo,style: GoogleFonts.poppins(fontSize: 14,))),
                       Positioned(
                           left: 20,
                           bottom: 20,

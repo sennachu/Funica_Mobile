@@ -87,12 +87,12 @@ class _LampScreenState extends State<LampScreen> {
           },
         ),
         title: Text(
-          "Kitchen Products",
+          "Lamp Products",
           style: GoogleFonts.poppins(),
         ),
       ),
       body: SingleChildScrollView(
-        child: homeProductCategories(kitchen),
+        child: homeProductCategories(lamp),
       ),
     );
   }

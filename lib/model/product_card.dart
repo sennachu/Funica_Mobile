@@ -70,12 +70,6 @@ class _ProductCardState extends State<ProductCard> {
                   ),
                 ],
               ),
-
-//BURASI HATA VERIYO PRODUCT_PROVİDER DA TANIMLADIGIMIZ ÜRÜNLERİ BURADA ÇEKEMEDİK HOCA LİSTEYİ BU SAYFA İÇİNDE TANIMLAMIŞ
-//AMA BİZDE AYRI SAYFADA VE LİSTEMİZ KATEGORILER HALİNDE AYRILMIŞ BU KONU HAKKINDA ÇÖZÜM İSTİYORUM
-//AYNI ÜRÜN ÇAĞIRMA MANTIĞI İLE SEPETE EKLE VE FAVORİ EKLE YAPILACAK SADECE
-//SEPETE EKLE KISMI PRODUCTS_DETAİL SAYFASI İÇERİSİNDE
-
               Padding(
                 padding: 7.horizontalP,
                 child: Row(
@@ -145,13 +139,30 @@ class _ProductCardState extends State<ProductCard> {
                 ],
               ),
               Padding(
-                  padding: [20, 20, 20, 0].paddingLTRB,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      widget.onTap();
-                    },
-                    child: Text("Add To Cart"),
-                  ))
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: ElevatedButton(
+                  onPressed: () {
+                    widget.onTap();
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Theme.of(context).brightness == Brightness.dark ? Colors.white24 : Colors.white12,
+                    padding: EdgeInsets.symmetric(vertical: 10, horizontal: 40), // Yükseklik ve genişlik
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30), // Kenar yuvarlaklığı
+                    ),
+                    elevation: 3, // Yükselti (gölge)
+                  ),
+                  child: Text(
+                    "Add To Cart",
+                    style: GoogleFonts.poppins(
+                      fontSize: 10, // Yazı boyutu
+                      fontWeight: FontWeight.bold, // Yazı kalınlığı
+                    ),
+                  ),
+                ),
+              ),
+
+
             ],
           ),
         ),

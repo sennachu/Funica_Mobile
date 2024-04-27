@@ -150,25 +150,25 @@ class _BoardingScreenState extends State<BoardingScreen> {
                         page == 0
                             ? CupertinoIcons.circle_filled
                             : CupertinoIcons.circle,
-                         color:Colors.black
+                        color: Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black,
                       ),
                       Icon(
                         page == 1
                             ? CupertinoIcons.circle_filled
                             : CupertinoIcons.circle,
-                         color:Colors.black
+                        color: Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black,
                       ),
                       Icon(
                         page == 2
                             ? CupertinoIcons.circle_filled
                             : CupertinoIcons.circle,
-                         color:Colors.black
+                        color: Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black,
                       ),
                       Icon(
                         page == 3
                             ? CupertinoIcons.circle_filled
                             : CupertinoIcons.circle,
-                         color:Colors.black
+                        color: Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black,
                       ),
                     ],
                   ),
@@ -198,25 +198,25 @@ class _BoardingScreenState extends State<BoardingScreen> {
                         page == 0
                             ? CupertinoIcons.circle_filled
                             : CupertinoIcons.circle,
-                         color:Colors.black
+                        color: Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black,
                       ),
                       Icon(
                         page == 1
                             ? CupertinoIcons.circle_filled
                             : CupertinoIcons.circle,
-                         color:Colors.black
+                        color: Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black,
                       ),
                       Icon(
                         page == 2
                             ? CupertinoIcons.circle_filled
                             : CupertinoIcons.circle,
-                         color:Colors.black
+                        color: Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black,
                       ),
                       Icon(
                         page == 3
                             ? CupertinoIcons.circle_filled
                             : CupertinoIcons.circle,
-                         color:Colors.black
+                        color: Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black,
                       ),
                     ],
                   ),
@@ -243,14 +243,14 @@ class _BoardingScreenState extends State<BoardingScreen> {
           width: 280,
           padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           decoration: BoxDecoration(
-            color: Colors.black,
+            color: Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black,
             borderRadius: BorderRadius.circular(15),
           ),
           child: Center(
             child: Text(
               'Get Started',
               style: TextStyle(
-                color: Colors.white,
+                color: Theme.of(context).brightness == Brightness.dark ? Colors.black : Colors.white,
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
               ),
@@ -259,6 +259,7 @@ class _BoardingScreenState extends State<BoardingScreen> {
         ),
       ),
     ),
+
   ],
 ),
         ],

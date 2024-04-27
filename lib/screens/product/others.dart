@@ -87,12 +87,12 @@ class _OthersScreenState extends State<OthersScreen> {
           },
         ),
         title: Text(
-          "Kitchen Products",
+          "Others Products",
           style: GoogleFonts.poppins(),
         ),
       ),
       body: SingleChildScrollView(
-        child: homeProductCategories(kitchen),
+        child: homeProductCategories(others),
       ),
     );
   }

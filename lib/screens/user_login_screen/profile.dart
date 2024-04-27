@@ -92,18 +92,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             image: DecorationImage(
-                              image: AssetImage('assets/images/logo.png'),
+                              image: AssetImage('assets/images/' + (Theme.of(context).brightness == Brightness.dark ? 'logo_white.png' : 'logo.png')),
                               fit: BoxFit.cover,
                             ),
                           ),
                         ),
                       ),
-                      Gap(213),
+
+
+                      Gap(210),
                       Padding(
                         padding: const EdgeInsets.only(top: 45),
                         child: Row(
                     children: [
-                      Gap(258),
                       Padding(
                           padding: const EdgeInsets.only(right: 2.0),
                           child: IconButton(
@@ -339,14 +340,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 : Colors.black,
                           ),
                         ),
-                        Gap(211),
-                        Icon(
-                          Icons.arrow_forward_ios,
-                          color: Theme.of(context).brightness == Brightness.dark
-                              ? Colors.white
-                              : Colors.black,
-                          size: 15,
-                        ),
                       ],
                     ),
                   ),
@@ -402,14 +395,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 : Colors.black,
                           ),
                         ),
-                        Gap(215),
-                        Icon(
-                          Icons.arrow_forward_ios,
-                          color: Theme.of(context).brightness == Brightness.dark
-                              ? Colors.white
-                              : Colors.black,
-                          size: 15,
-                        ),
+
                       ],
                     ),
                   ),

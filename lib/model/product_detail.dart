@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:funica_mobile/bloc/cart/cart_cubit.dart';
 import 'package:funica_mobile/bloc/favorite/products_cubit.dart';
+import 'package:funica_mobile/core/locazilations.dart';
 import 'package:funica_mobile/model/product.dart';
 import 'package:funica_mobile/screens/static/home.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -112,7 +113,7 @@ class _ProductDetailState extends State<ProductDetail> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "Colors",
+            AppLocalizations.of(context).getTranslate("Renkler"),
             style: _subTitle,
           ),
           const SizedBox(height: 8),

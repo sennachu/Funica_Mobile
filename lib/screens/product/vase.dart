@@ -87,12 +87,12 @@ class _VaseScreenState extends State<VaseScreen> {
           },
         ),
         title: Text(
-          "Kitchen Products",
+          "Vase Products",
           style: GoogleFonts.poppins(),
         ),
       ),
       body: SingleChildScrollView(
-        child: homeProductCategories(kitchen),
+        child: homeProductCategories(vase),
       ),
     );
   }
