@@ -12,6 +12,7 @@ import 'package:go_router/go_router.dart';
 import 'package:funica_mobile/model/product_provider.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:grock/grock.dart';
+import 'package:permission_handler/permission_handler.dart';
 import '../../core/locazilations.dart';
 import '../../model/product_card.dart';
 import '../../widgets/bottomNavigation.dart';
@@ -89,9 +90,26 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         actions: [
           IconButton(
-            icon: Icon(Icons.notifications_on_outlined, size: 20.0),
-            onPressed: () {
-              // Bildirimler sayfasına yönlendirme
+            icon: Icon(Icons.location_on_outlined, size: 20.0),
+            onPressed: () async {
+              var status = await Permission.location.status;
+              if (!status.isGranted) {
+                var result = await Permission.location.request();
+                if (result == PermissionStatus.granted) {
+                  // Konum izni alındı, burada yapılacak işlemler
+                  // Örneğin, bildirimler sayfasına yönlendirme
+                  // Navigator.push(...)
+                } else if (result == PermissionStatus.denied) {
+                  // Kullanıcı izni reddetti, gerekirse kullanıcıyı yönlendir
+                } else if (result == PermissionStatus.permanentlyDenied) {
+                  // Kullanıcı izni kalıcı olarak reddetti, gerekirse ayarlara yönlendir
+                  openAppSettings();
+                }
+              } else {
+                // Konum izni zaten var, burada yapılacak işlemler
+                // Örneğin, bildirimler sayfasına yönlendirme
+                // Navigator.push(...)
+              }
             },
           ),
           IconButton(
