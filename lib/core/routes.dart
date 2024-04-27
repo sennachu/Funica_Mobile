@@ -1,10 +1,8 @@
-import 'package:funica_mobile/chatsBot/chatBot.dart';
+
 import 'package:funica_mobile/model/product_detail.dart';
 import 'package:funica_mobile/screens/user_login_screen/letyouin.dart';
 import 'package:funica_mobile/screens/product/chair.dart';
 import 'package:go_router/go_router.dart';
-import 'package:funica_mobile/chatsBot/chatBot.dart';
-
 import '../screens/user_login_screen/login.dart';
 import '../screens/user_login_screen/profile.dart';
 import '../screens/user_login_screen/register.dart';
@@ -14,7 +12,6 @@ import '../screens/product/cupboard.dart';
 import '../screens/product/kitchen.dart';
 import '../screens/product/lamp.dart';
 import '../screens/product/others.dart';
-
 import '../screens/product/search.dart';
 // import '../screens/static/about.dart';
 import '../screens/product/sofa.dart';
@@ -154,10 +151,7 @@ final routes = GoRouter(
       path: '/help',
       builder: (context, state) => const HelpScreen(),
     ),
-    GoRoute(
-      path: '/chat',
-      builder: (context, state) => const SoruSorScreen(),
-    ),
+
   ],
   
 );
