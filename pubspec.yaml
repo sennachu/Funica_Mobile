@@ -27,6 +27,9 @@ dependencies:
   flutter_bloc: ^8.1.5
   flex_color_scheme: ^7.3.1
   flutter_localization: ^0.2.0
+  flutter_swiper_view: ^1.1.8
+  dash_chat_2: ^0.0.20
+  flutter_gemini: ^2.0.3
 
 dev_dependencies:
   flutter_test:

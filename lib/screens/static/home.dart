@@ -12,6 +12,7 @@ import 'package:go_router/go_router.dart';
 import 'package:funica_mobile/model/product_provider.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:grock/grock.dart';
+import '../../core/locazilations.dart';
 import '../../model/product_card.dart';
 import '../../widgets/bottomNavigation.dart';
 
@@ -144,9 +145,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    //dil desteğinde böyle tanımlanıcak ancak lang yazısı çıkmamalı
-                    //AppLocalizations.of(context).getTranslate("Spesiyal"),
-                    'Special Offers',
+                    AppLocalizations.of(context).getTranslate("Spesiyal"),
                     style: GoogleFonts.poppins(fontSize: 15, fontWeight: FontWeight.bold),
                   ),
                   Text(
@@ -449,7 +448,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigator(selectedIndex: 0),
+      
 
     );
   }

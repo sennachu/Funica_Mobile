@@ -48,7 +48,7 @@ class AppLocalizations {
     if (_valueText.containsKey(key)) {
       return _valueText[key]!;
     } else {
-      return "-- LANG $key--";
+      return "$key";
     }
   }
 

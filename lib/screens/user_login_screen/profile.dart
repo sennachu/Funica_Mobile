@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:funica_mobile/bloc/cart/cart_cubit.dart';
 import 'package:funica_mobile/bloc/client/client_cubit.dart';
+import 'package:funica_mobile/bloc/favorite/products_cubit.dart';
 import 'package:funica_mobile/core/utils.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
@@ -9,6 +11,7 @@ import 'package:funica_mobile/screens/user_login_screen/login.dart';
 import 'package:funica_mobile/widgets/bottomNavigation.dart';
 import 'package:grock/grock.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../../core/locazilations.dart';
 
 void showFriendInvitedDialog(BuildContext context) {
   showDialog(
@@ -36,12 +39,16 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen> {
   late ClientCubit clientCubit;
+  late CartCubit cartCubit;
+  late ProductsCubit productsCubit;
 
   @override
   void initState() {
     init();
     super.initState();
     clientCubit = context.read<ClientCubit>();
+    cartCubit = context.read<CartCubit>();
+    productsCubit = context.read<ProductsCubit>();
   }
 
   String? mail;
@@ -91,12 +98,26 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           ),
                         ),
                       ),
-                      Gap(5),
+                      Gap(213),
                       Padding(
                         padding: const EdgeInsets.only(top: 45),
                         child: Row(
                     children: [
                       Gap(258),
+                      Padding(
+                          padding: const EdgeInsets.only(right: 2.0),
+                          child: IconButton(
+                            onPressed: () {
+                              if (clientCubit.state.language == "tr") {
+                                clientCubit.changeLanguage(language: "en");
+                              } else {
+                                clientCubit.changeLanguage(language: "tr");
+                              }
+                            },
+                            icon: Icon(Icons.language),
+                          ),
+                        ),
+                        
                       if(clientCubit.state.darkMode)
                       IconButton(
                           onPressed: () {
@@ -160,14 +181,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     child: Column(
                       children: [
                         Text(
-                          'Your Mail: $mail',
+                          AppLocalizations.of(context).getTranslate('E-Mail: $mail'),
                           style: GoogleFonts.comfortaa(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                         Text(
-                          'Your Password: $password',
+                            AppLocalizations.of(context).getTranslate('Şifre: $password'),
                           style: GoogleFonts.comfortaa(
                             fontSize: 10,
                             fontWeight: FontWeight.bold,
@@ -198,7 +219,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           ),
                           Gap(5),
                           Text(
-                            "Edit Profile",
+                             AppLocalizations.of(context).getTranslate("Profil Düzenle"),
                             style: GoogleFonts.poppins(
                               fontSize: 15,
                               color: Theme.of(context).brightness == Brightness.dark
@@ -206,14 +227,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   : Colors.black,
                             ),
                           ),
-                          Gap(234),
-                          Icon(
-                            Icons.arrow_forward_ios,
-                            color: Theme.of(context).brightness == Brightness.dark
-                                ? Colors.white
-                                : Colors.black,
-                            size: 15,
-                          ),
+                          
                         ],
                       )),
                   Gap(20),
@@ -232,7 +246,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           ),
                           Gap(5),
                           Text(
-                            "Adress",
+                           AppLocalizations.of(context).getTranslate("Adres"),
                             style: GoogleFonts.poppins(
                               fontSize: 15,
                               color: Theme.of(context).brightness == Brightness.dark
@@ -240,14 +254,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   : Colors.black,
                             ),
                           ),
-                          Gap(262),
-                          Icon(
-                            Icons.arrow_forward_ios,
-                            color: Theme.of(context).brightness == Brightness.dark
-                                ? Colors.white
-                                : Colors.black,
-                            size: 15,
-                          ),
+                         
                         ],
                       )),
                   Gap(20),
@@ -266,7 +273,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           ),
                           Gap(5),
                           Text(
-                            "Notification",
+                            AppLocalizations.of(context).getTranslate("Bildirimler"),
                             style: GoogleFonts.poppins(
                               fontSize: 15,
                               color: Theme.of(context).brightness == Brightness.dark
@@ -274,14 +281,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   : Colors.black,
                             ),
                           ),
-                          Gap(226),
-                          Icon(
-                            Icons.arrow_forward_ios,
-                            color: Theme.of(context).brightness == Brightness.dark
-                                ? Colors.white
-                                : Colors.black,
-                            size: 15,
-                          ),
+                          
                         ],
                       )),
                   Gap(20),
@@ -300,7 +300,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           ),
                           Gap(5),
                           Text(
-                            "Security",
+                             AppLocalizations.of(context).getTranslate("Güvenlik"),
                             style: GoogleFonts.poppins(
                               fontSize: 15,
                               color: Theme.of(context).brightness == Brightness.dark
@@ -308,42 +308,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   : Colors.black,
                             ),
                           ),
-                          Gap(253),
-                          Icon(
-                            Icons.arrow_forward_ios,
-                            color: Theme.of(context).brightness == Brightness.dark
-                                ? Colors.white
-                                : Colors.black,
-                            size: 15,
-                          ),
+                          
                         ],
                       )),
-                  Gap(20),
-                  GestureDetector(
-                      onTap: () {
-                        GoRouter.of(context).go('/language');
-                      },
-                      child: Row(
-                        children: [
-                          Icon(
-                            Icons.language_outlined,
-                            size: 20,
-                            color: Theme.of(context).brightness == Brightness.dark
-                                ? Colors.white
-                                : Colors.black,
-                          ),
-                          Gap(5),
-                          Text(
-                            "Language: " + clientCubit.state.language,
-                            style: GoogleFonts.poppins(
-                              fontSize: 15,
-                              color: Theme.of(context).brightness == Brightness.dark
-                                  ? Colors.white
-                                  : Colors.black,
-                            ),
-                          ),
-                        ],
-                      )),
+                 
+                  
                   
                   
                   Gap(20),
@@ -362,7 +331,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         ),
                         Gap(5),
                         Text(
-                          "Privacy Policy",
+                          AppLocalizations.of(context).getTranslate("Politikalar"),
                           style: GoogleFonts.poppins(
                             fontSize: 15,
                             color: Theme.of(context).brightness == Brightness.dark
@@ -397,7 +366,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         ),
                         Gap(5),
                         Text(
-                          "Help",
+                          AppLocalizations.of(context).getTranslate("Yardım"),
                           style: GoogleFonts.poppins(
                             fontSize: 15,
                             color: Theme.of(context).brightness == Brightness.dark
@@ -405,14 +374,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 : Colors.black,
                           ),
                         ),
-                        Gap(282),
-                        Icon(
-                          Icons.arrow_forward_ios,
-                          color: Theme.of(context).brightness == Brightness.dark
-                              ? Colors.white
-                              : Colors.black,
-                          size: 15,
-                        ),
+                       
                       ],
                     ),
                   ),
@@ -432,7 +394,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         ),
                         Gap(5),
                         Text(
-                          "Invite Friends",
+                          AppLocalizations.of(context).getTranslate("Arkadaşları Davet Et"),
                           style: GoogleFonts.poppins(
                             fontSize: 15,
                             color: Theme.of(context).brightness == Brightness.dark
@@ -468,7 +430,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         ),
                         Gap(5),
                         Text(
-                          "Sign Out",
+                          AppLocalizations.of(context).getTranslate("Oturumu Kapat"),
                           style: GoogleFonts.poppins(
                               fontWeight: FontWeight.bold,
                               fontSize: 15,
