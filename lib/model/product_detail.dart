@@ -10,7 +10,9 @@ import 'package:grock/grock.dart';
 
 class ProductDetail extends StatefulWidget {
   Product product;
-  ProductDetail({required this.product});
+   Function onTap;
+  ProductDetail({required this.product, required this.onTap});
+ 
 
   @override
   State<ProductDetail> createState() => _ProductDetailState();
@@ -40,6 +42,18 @@ class _ProductDetailState extends State<ProductDetail> {
                   subDetail(),
                   title(context),
                   colors(),
+                  Padding(
+                    padding: [20, 20, 20, 0].paddingLTRB,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        widget.onTap();
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.black,
+                      ),
+                      child: Text("Add To Cart"),
+                    ),
+                  ),
                 ],
               ),
               appbar(context)
@@ -73,6 +87,7 @@ class _ProductDetailState extends State<ProductDetail> {
       ),
     );
   }
+
 
   SafeArea appbar(BuildContext context) {
     return SafeArea(

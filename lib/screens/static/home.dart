@@ -562,54 +562,58 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Widget homeProductCategories(HomeProductsModel model) {
-    return GridView.count(
-      shrinkWrap: true,
-      crossAxisCount: 2,
-      childAspectRatio: 0.55,
-      children: List.generate(
-        model.products.length,
-        (index) {
-          return ProductCard(
-            functionOnTapFavorite: () {
-              Map<String, dynamic> productMap = {
-                "id": model.products[index].id,
-                "name": model.products[index].name,
-                "photo": model.products[index].photo,
-                "icon": model.products[index].icon,
-                "price": model.products[index].price,
-                "puan": model.products[index].puan,
-                "tire": model.products[index].tire,
-                "sold": model.products[index].sold,
-                "descTitle": model.products[index].descTitle,
-                "descDetail": model.products[index].descDetail,
-                "colors": model.products[index].colors,
-                "isFavorite": model.products[index].isFavorite,
-              };
-              if (model.products[index].isFavorite == false) {
-                model.products[index].isFavorite = true;
-                productsCubit.addToFavorites(productMap);
-              } else if (model.products[index].isFavorite == true) {
-                model.products[index].isFavorite = false;
-                productsCubit.removeFromFavorites(model.products[index].id);
-              }
+ Widget homeProductCategories(HomeProductsModel model) {
+  return GridView.count(
+    shrinkWrap: true,
+    crossAxisCount: 2,
+    childAspectRatio: 0.8, // Yükseklik ayarını bu parametre ile yapabiliriz
+    children: List.generate(
+      model.products.length,
+      (index) {
+        return ProductCard(
+          functionOnTapFavorite: () {
+            Map<String, dynamic> productMap = {
+              "id": model.products[index].id,
+              "name": model.products[index].name,
+              "photo": model.products[index].photo,
+              "icon": model.products[index].icon,
+              "price": model.products[index].price,
+              "puan": model.products[index].puan,
+              "tire": model.products[index].tire,
+              "sold": model.products[index].sold,
+              "descTitle": model.products[index].descTitle,
+              "descDetail": model.products[index].descDetail,
+              "colors": model.products[index].colors,
+              "isFavorite": model.products[index].isFavorite,
+            };
+            if (model.products[index].isFavorite == false) {
+              model.products[index].isFavorite = true;
+              productsCubit.addToFavorites(productMap);
+            } else if (model.products[index].isFavorite == true) {
+              model.products[index].isFavorite = false;
+              productsCubit.removeFromFavorites(model.products[index].id);
+            }
 
-              setState(() {});
-            },
-            product: model.products[index],
-            onTap: () {
-              cartCubit.sepeteEkle(
-                  id: model.products[index].id,
-                  ad: model.products[index].name,
-                  sayi: 1,
-                  fiyat: model.products[index].price,
-                  gorsel: model.products[index].photo);
-            },
-          );
-        },
-      ),
-    );
-  }
+            setState(() {});
+          },
+          product: model.products[index],
+          onTap: () {
+            cartCubit.sepeteEkle(
+              id: model.products[index].id,
+              ad: model.products[index].name,
+              sayi: 1,
+              fiyat: model.products[index].price,
+              gorsel: model.products[index].photo,
+            );
+          },
+        );
+      },
+    ),
+  );
+}
+
+
+
 
   Padding productsContainer(BuildContext context) {
     return Padding(

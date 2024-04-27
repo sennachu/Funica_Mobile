@@ -26,11 +26,12 @@ class _ProductCardState extends State<ProductCard> {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => ProductDetail(product: widget.product),
+              builder: (context) => ProductDetail(product: widget.product, onTap: widget.onTap,),
             ),
           );
-        },
+        }, 
         child: Container(
+          
           decoration: BoxDecoration(
             color: Theme.of(context).brightness == Brightness.dark ? Colors.black : Colors.white,
             borderRadius: BorderRadius.circular(15),
@@ -65,7 +66,13 @@ class _ProductCardState extends State<ProductCard> {
                     },
                     child: Padding(
                       padding: const EdgeInsets.all(2.0),
-                      child: widget.product.isFavorite == false ? Icon(Icons.favorite_border_outlined) : Icon(Icons.favorite),
+                      child: widget.product.isFavorite == false  
+                      ?Icon(Icons.favorite_border_outlined,color: Colors.black,) 
+                      : Icon(Icons.favorite,color:
+                      Theme.of(context).brightness == Brightness.dark
+                      ? Colors.black
+                      : Colors.black,
+                      ),
                     ),
                   ),
                 ],
@@ -138,29 +145,7 @@ class _ProductCardState extends State<ProductCard> {
                   ),
                 ],
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: ElevatedButton(
-                  onPressed: () {
-                    widget.onTap();
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Theme.of(context).brightness == Brightness.dark ? Colors.white24 : Colors.white12,
-                    padding: EdgeInsets.symmetric(vertical: 10, horizontal: 40), // Yükseklik ve genişlik
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30), // Kenar yuvarlaklığı
-                    ),
-                    elevation: 3, // Yükselti (gölge)
-                  ),
-                  child: Text(
-                    "Add To Cart",
-                    style: GoogleFonts.poppins(
-                      fontSize: 10, // Yazı boyutu
-                      fontWeight: FontWeight.bold, // Yazı kalınlığı
-                    ),
-                  ),
-                ),
-              ),
+              
 
 
             ],

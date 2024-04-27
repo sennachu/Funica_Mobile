@@ -1,4 +1,5 @@
 
+import 'package:funica_mobile/chatBot/chatBot.dart';
 import 'package:funica_mobile/model/product_detail.dart';
 import 'package:funica_mobile/screens/user_login_screen/letyouin.dart';
 import 'package:funica_mobile/screens/product/chair.dart';
@@ -150,6 +151,10 @@ final routes = GoRouter(
     GoRoute(
       path: '/help',
       builder: (context, state) => const HelpScreen(),
+    ),
+    GoRoute(
+      path: '/chat',
+      builder: (context, state) => const SoruSorScreen(),
     ),
 
   ],

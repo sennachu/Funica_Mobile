@@ -32,7 +32,7 @@ class _LampScreenState extends State<LampScreen> {
       return GridView.count(
         shrinkWrap: true,
         crossAxisCount: 2,
-        childAspectRatio: 0.55,
+         childAspectRatio: 0.8,
         children: List.generate(
           model.products.length,
           (index) {

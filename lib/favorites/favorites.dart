@@ -86,7 +86,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
                                   onPressed: () {
                                     productsCubit.addToFavorites(state.favorites[index]);
                                   },
-                                  icon: const Icon(Icons.favorite_border))
+                                  icon: const Icon(Icons.favorite_border,))
                           ],
                         ),
                       ],

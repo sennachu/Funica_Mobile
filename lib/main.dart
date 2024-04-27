@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gemini/flutter_gemini.dart';
 
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:funica_mobile/bloc/cart/cart_cubit.dart';
 import 'package:funica_mobile/bloc/favorite/products_cubit.dart';
+import 'package:funica_mobile/chatBot/consts.dart';
 import 'bloc/client/client_cubit.dart';
 import 'core/locazilations.dart';
 import 'core/routes.dart';
 import 'core/themess.dart';
 
 void main() {
-
+  Gemini.init(
+    apiKey: GEMINI_API_KEY,
+    );
 
   runApp(const MainApp());
 
