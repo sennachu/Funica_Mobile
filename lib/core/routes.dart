@@ -22,7 +22,6 @@ import '../screens/profile_sec/adress.dart';
 import '../screens/profile_sec/edit_profile.dart';
 import '../screens/profile_sec/help.dart';
 
-import '../screens/profile_sec/language.dart';
 import '../screens/profile_sec/notification.dart';
 import '../screens/static/wallet.dart';
 import '../screens/profile_sec/privacy.dart';
@@ -140,10 +139,7 @@ final routes = GoRouter(
       path: '/security',
       builder: (context, state) => const SecurityScreen(),
     ),
-    GoRoute(
-      path: '/language',
-      builder: (context, state) => const LanguageScreen(),
-    ),
+    
     GoRoute(
       path: '/privacy',
       builder: (context, state) => const PrivacyScreen(),

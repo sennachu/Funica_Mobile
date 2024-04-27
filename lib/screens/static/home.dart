@@ -562,17 +562,17 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
- Widget homeProductCategories(HomeProductsModel model) {
-  return GridView.count(
-    shrinkWrap: true,
-    crossAxisCount: 2,
-    childAspectRatio: 0.8, // Yükseklik ayarını bu parametre ile yapabiliriz
-    children: List.generate(
-      model.products.length,
+Widget homeProductCategories(HomeProductsModel model) {
+  return GridView.count( // GridView oluşturuyoruz
+    shrinkWrap: true, // Gridview'i içindeki elemanlar kadar sarmasını sağlar
+    crossAxisCount: 2, // Gridview'in kaç sütundan oluşacağını belirtir
+    childAspectRatio: 0.8, // Her bir elemanın boyutunu ayarlar
+    children: List.generate( // Ürün kartlarını oluşturmak için liste elemanlarını döngüyle gezerek ProductCard widget'ını üretir
+      model.products.length, // Ürün sayısı kadar döngü yapar
       (index) {
-        return ProductCard(
-          functionOnTapFavorite: () {
-            Map<String, dynamic> productMap = {
+        return ProductCard( // Her bir ürün için ProductCard widget'ı oluşturur
+          functionOnTapFavorite: () { // Favoriye ekleme/çıkarma işlemi
+            Map<String, dynamic> productMap = { // Ürün bilgilerini bir haritada saklar
               "id": model.products[index].id,
               "name": model.products[index].name,
               "photo": model.products[index].photo,
@@ -586,19 +586,19 @@ class _HomeScreenState extends State<HomeScreen> {
               "colors": model.products[index].colors,
               "isFavorite": model.products[index].isFavorite,
             };
-            if (model.products[index].isFavorite == false) {
-              model.products[index].isFavorite = true;
-              productsCubit.addToFavorites(productMap);
-            } else if (model.products[index].isFavorite == true) {
-              model.products[index].isFavorite = false;
-              productsCubit.removeFromFavorites(model.products[index].id);
+            if (model.products[index].isFavorite == false) { // Eğer ürün favori değilse
+              model.products[index].isFavorite = true; // Ürünü favorilere ekle
+              productsCubit.addToFavorites(productMap); // Favorilere ekleme işlemini gerçekleştir
+            } else if (model.products[index].isFavorite == true) { // Eğer ürün favoride ise
+              model.products[index].isFavorite = false; // Ürünü favorilerden çıkar
+              productsCubit.removeFromFavorites(model.products[index].id); // Favorilerden çıkarma işlemini gerçekleştir
             }
 
-            setState(() {});
+            setState(() {}); // Değişikliklerin UI'ye yansıtılması için setState() çağırılır
           },
-          product: model.products[index],
-          onTap: () {
-            cartCubit.sepeteEkle(
+          product: model.products[index], // ProductCard'a gösterilecek ürün bilgileri verilir
+          onTap: () { // Ürün kartına tıklama işlemi
+            cartCubit.sepeteEkle( // Sepete ürün eklemek için cartCubit kullanılır
               id: model.products[index].id,
               ad: model.products[index].name,
               sayi: 1,
@@ -611,6 +611,7 @@ class _HomeScreenState extends State<HomeScreen> {
     ),
   );
 }
+
 
 
 

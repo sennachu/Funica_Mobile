@@ -5,23 +5,32 @@ import 'package:funica_mobile/model/product_detail.dart';
 import 'package:gap/gap.dart';
 import 'package:grock/grock.dart';
 
+// Ürün kartını temsil eden sınıf
 class ProductCard extends StatefulWidget {
+  // Ürünü temsil eden nesne
   Product product;
+  // Ürün kartına tıklandığında çalışacak işlem
   Function onTap;
+  // Ürünün favorilere eklendiğinde çalışacak işlem
   Function functionOnTapFavorite;
 
+  // Ürün kartını oluşturan constructor
   ProductCard({required this.product, required this.onTap, required this.functionOnTapFavorite});
 
   @override
-  State<ProductCard> createState() => _ProductCardState();
+  // Ürün kartının durumunu yöneten sınıf
+  _ProductCardState createState() => _ProductCardState();
 }
 
+// Ürün kartının durumunu yöneten sınıf
 class _ProductCardState extends State<ProductCard> {
   @override
+  // Ürün kartının görsel kısmı
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: GestureDetector(
+        // Ürün kartına tıklandığında çalışacak işlem
         onTap: () {
           Navigator.push(
             context,
@@ -29,9 +38,9 @@ class _ProductCardState extends State<ProductCard> {
               builder: (context) => ProductDetail(product: widget.product, onTap: widget.onTap,),
             ),
           );
-        }, 
+        },
         child: Container(
-          
+          // Ürün kartının görsel özellikleri
           decoration: BoxDecoration(
             color: Theme.of(context).brightness == Brightness.dark ? Colors.black : Colors.white,
             borderRadius: BorderRadius.circular(15),
@@ -43,32 +52,37 @@ class _ProductCardState extends State<ProductCard> {
             ],
           ),
           child: Column(
+            // Ürün kartının içeriğinin yerleşimi
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              // Ürünün resmi ve favori butonu
               Stack(
                 alignment: Alignment.topRight,
                 children: [
+                  // Ürünün resmi
                   ClipRRect(
                     borderRadius: BorderRadius.circular(10.0), // Kenar yarıçapını belirleyin
                     child: Hero(
-                      tag: widget.product.photo,
+                      tag: widget.product.photo, // Ürünün resmi için benzersiz bir etiket
                       child: Image.asset(
-                        widget.product.photo,
-                        height: 150,
-                        width: 250,
-                        fit: BoxFit.cover,
+                        widget.product.photo, // Ürünün resmi
+                        height: 150, // Resim yüksekliği
+                        width: 250, // Resim genişliği
+                        fit: BoxFit.cover, // Resim yüzeyine sığdır
                       ),
                     ),
                   ),
+                  // Ürünün favori butonu
                   InkWell(
                     onTap: () {
+                      // Ürünün favorilere eklendiğinde çalışacak işlem
                       widget.functionOnTapFavorite();
                     },
                     child: Padding(
                       padding: const EdgeInsets.all(2.0),
-                      child: widget.product.isFavorite == false  
-                      ?Icon(Icons.favorite_border_outlined,color: Colors.black,) 
-                      : Icon(Icons.favorite,color:
+                      // Ürünün favori olup olmadığına göre butonun görseli değişir
+                      child: widget.product.isFavorite == false
+                      ?Icon(Icons.favorite_border_outlined,color: Colors.black,): Icon(Icons.favorite,color:
                       Theme.of(context).brightness == Brightness.dark
                       ? Colors.black
                       : Colors.black,
@@ -77,11 +91,13 @@ class _ProductCardState extends State<ProductCard> {
                   ),
                 ],
               ),
+              // Ürünün adı
               Padding(
                 padding: 7.horizontalP,
                 child: Row(
                   children: [
                     Text(
+                      // Ürünün adı
                       "${widget.product.name}",
                       style: GoogleFonts.poppins(
                         // Poppins yazı tipini burada kullanıyoruz
@@ -92,16 +108,19 @@ class _ProductCardState extends State<ProductCard> {
                   ],
                 ),
               ),
+              // Ürünün detayları
               Gap(2),
               Padding(
                 padding: 7.horizontalP,
                 child: Row(
                   children: [
+                    // Ürünün ikonu
                     Icon(
                       widget.product.icon,
                       size: 20,
                     ),
                     SizedBox(width: 6),
+                    // Ürünün puanı
                     Text(
                       widget.product.puan,
                       style: GoogleFonts.poppins(
@@ -109,6 +128,7 @@ class _ProductCardState extends State<ProductCard> {
                       ),
                     ),
                     SizedBox(width: 5),
+                    // Ürünün kalitesi
                     Text(
                       widget.product.tire,
                       style: GoogleFonts.poppins(
@@ -116,6 +136,7 @@ class _ProductCardState extends State<ProductCard> {
                       ),
                     ),
                     SizedBox(width: 10),
+                    // Ürünün satış sayısı
                     Container(
                       width: 55,
                       height: 20,
@@ -133,6 +154,7 @@ class _ProductCardState extends State<ProductCard> {
                   ],
                 ),
               ),
+              // Ürünün fiyatı
               SizedBox(height: 3),
               Row(
                 children: [
@@ -145,9 +167,6 @@ class _ProductCardState extends State<ProductCard> {
                   ),
                 ],
               ),
-              
-
-
             ],
           ),
         ),
