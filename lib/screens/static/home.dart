@@ -61,7 +61,11 @@ class _HomeScreenState extends State<HomeScreen> {
         leading: Padding(
           padding: const EdgeInsets.only(left: 16.0),
           child: CircleAvatar(
-            backgroundImage: AssetImage("assets/images/kadin1.jpeg"),
+            backgroundColor: Colors.transparent,
+            backgroundImage: AssetImage('assets/images/' +
+                (Theme.of(context).brightness == Brightness.dark
+                    ? 'logo_white.png'
+                    : 'logo.png')),
           ),
         ),
         title: Column(

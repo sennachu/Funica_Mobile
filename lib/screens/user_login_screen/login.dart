@@ -212,12 +212,12 @@ class _LoginPageState extends State<LoginPage> {
 
                   if (response.statusCode == 200) {
                     print('Data Sending Success.');
-                    Navigator.pushNamedAndRemoveUntil(
-                        context, "/home", (Route<dynamic> route) => false);
+                    
                     final SharedPreferences prefs =
                         await SharedPreferences.getInstance();
                     prefs.setString("usernameLogin", _emailController.text);
                     prefs.setString("passwordLogin", _passwordController.text);
+                     GoRouter.of(context).go('/home');
                   } else {
                     print('Hata: ${response.body}');
                     ScaffoldMessenger.of(context).showSnackBar(
