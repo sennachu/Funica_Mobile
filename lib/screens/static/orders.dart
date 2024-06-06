@@ -14,6 +14,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+     
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -85,7 +86,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigator(selectedIndex: 2),
+      bottomNavigationBar: const BottomNavigator(selectedIndex: 2),
     );
   }
 }

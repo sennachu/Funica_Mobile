@@ -551,7 +551,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigator(selectedIndex: 0),
+     
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           GoRouter.of(context).go('/chat');

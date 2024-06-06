@@ -280,7 +280,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
               ),
       ),
     ),
-    bottomNavigationBar: BottomNavigator(selectedIndex: 3), // Alt gezinme çubuğunu oluştur
+    
   );
 }
 

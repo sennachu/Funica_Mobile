@@ -1,8 +1,9 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:funica_mobile/core/utils.dart';
-import 'package:funica_mobile/screens/user_login_screen/register.dart';
 import 'package:funica_mobile/screens/static/home.dart';
+import 'package:funica_mobile/screens/static/home_in.dart';
+import 'package:funica_mobile/screens/user_login_screen/register.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';

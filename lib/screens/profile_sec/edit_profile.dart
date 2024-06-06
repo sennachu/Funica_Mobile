@@ -248,7 +248,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
           ),
         ),
       ),
-      bottomNavigationBar: BottomNavigator(selectedIndex: 4),
+      bottomNavigationBar: const BottomNavigator(selectedIndex: 4),
     );
   }
 }
