@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:funica_mobile/bloc/cart/cart_cubit.dart';
 import 'package:funica_mobile/bloc/client/client_cubit.dart';
 import 'package:funica_mobile/bloc/favorite/products_cubit.dart';
+import 'package:funica_mobile/core/locazilations.dart';
 import 'package:funica_mobile/core/utils.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
@@ -11,7 +12,6 @@ import 'package:funica_mobile/screens/user_login_screen/login.dart';
 import 'package:funica_mobile/widgets/bottomNavigation.dart';
 import 'package:grock/grock.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../../core/locazilations.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path_provider/path_provider.dart';
 import 'dart:io';
@@ -172,60 +172,67 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ],
                 ),
                 Gap(20),
-          Stack(
-            alignment: Alignment.center,
-            children: [
-              Center(
-                child: Container(
-                  width: 100,
-                  height: 100,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(50),
-                    shape: BoxShape.rectangle,
-                    color: Colors.white,
-                    border: Border.all(color: Colors.grey, width: 1.3),
-                  ),
-                  child: _image != null
-                      ? ClipRRect(
-                    borderRadius: BorderRadius.circular(10),
-                    child: Image.file(
-                      File(_image!.path),
-                      fit: BoxFit.cover,
-                    ),
-                  )
-                      : const SizedBox(),
-                ),
-              ),
-              Positioned(
-                bottom: 0,
-                right: 140,
-                child: GestureDetector(
-                  onTap: () {
-                    _pickImage();
-                  },
-                  child: Container(
-                    padding: const EdgeInsets.all(8),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      shape: BoxShape.rectangle,
-                      color: Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black,
-                      border: Border.all(
-                        color: Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black,
-                        width: 0.3,
+                Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    Center(
+                      child: Container(
+                        width: 100,
+                        height: 100,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(50),
+                          shape: BoxShape.rectangle,
+                          color: Colors.white,
+                          border: Border.all(color: Colors.grey, width: 1.3),
+                        ),
+                        child: _image != null
+                            ? ClipRRect(
+                                borderRadius: BorderRadius.circular(50),
+                                child: Image.file(
+                                  File(_image!.path),
+                                  fit: BoxFit.cover,
+                                ),
+                              )
+                            : const SizedBox(),
                       ),
                     ),
-                    child: Icon(
-                      Icons.edit,
-                      color: Theme.of(context).brightness == Brightness.light
-                          ? Colors.white
-                          : Colors.black,
+                    Positioned(
+                      bottom: 0,
+                      right: 140,
+                      child: GestureDetector(
+                        onTap: () {
+                          _pickImage();
+                        },
+                        child: Container(
+                          padding: const EdgeInsets.all(8),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            shape: BoxShape.rectangle,
+                            color:
+                                Theme.of(context).brightness == Brightness.dark
+                                    ? Colors.white
+                                    : Colors.black,
+                            border: Border.all(
+                              color: Theme.of(context).brightness ==
+                                      Brightness.dark
+                                  ? Colors.white
+                                  : Colors.black,
+                              width: 0.3,
+                            ),
+                          ),
+                          child: Icon(
+                            Icons.edit,
+                            color:
+                                Theme.of(context).brightness == Brightness.light
+                                    ? Colors.white
+                                    : Colors.black,
+                          ),
+                        ),
+                      ),
                     ),
-                  ),
+                  ],
                 ),
-              ),
-            ],
-          ),
-          Gap(10),
+                Gap(10),
                 Center(
                   child: Column(
                     children: [
@@ -252,7 +259,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 Container(
                   height: 1,
                   color: const Color.fromARGB(255, 216, 216,
-                      216), // İsteğe bağlı, çizginin rengini değiştirebilirsiniz
+                      216), // Optional: You can change the color of the line
                 ),
                 SizedBox(height: 20),
                 GestureDetector(
@@ -449,10 +456,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
                 Gap(20),
                 GestureDetector(
-                  onTap: () async {
-                    final SharedPreferences prefs =
-                        await SharedPreferences.getInstance();
-                    prefs.clear();
+                  onTap: () {
                     GoRouter.of(context).go('/boarding');
                   },
                   child: Row(
