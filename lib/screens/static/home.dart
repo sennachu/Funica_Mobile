@@ -1,9 +1,13 @@
+import 'dart:io';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:funica_mobile/bloc/cart/cart_cubit.dart';
 import 'package:funica_mobile/bloc/client/client_cubit.dart';
 import 'package:funica_mobile/bloc/favorite/products_cubit.dart';
+import 'package:funica_mobile/core/cache.dart';
 import 'package:funica_mobile/favorites/favorites.dart';
 import 'package:funica_mobile/model/home_products_model.dart';
 import 'package:funica_mobile/screens/product/sofa.dart';
@@ -12,9 +16,12 @@ import 'package:go_router/go_router.dart';
 import 'package:funica_mobile/model/product_provider.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:grock/grock.dart';
+import 'package:http/http.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 import '../../core/locazilations.dart';
 import '../../model/product_card.dart';
+import '../../services/api.dart';
 import '../../widgets/bottomNavigation.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -30,9 +37,24 @@ class _HomeScreenState extends State<HomeScreen> {
   late ClientCubit clientCubit;
   late ProductsCubit productsCubit;
 
+  String temp = "";
+
+  klasorleriAl() async {
+    if (kIsWeb) {
+    } else {
+      API api = API();
+      final response = await api.getStaticPage();
+      CacheSystem cacheYoneticim = CacheSystem();
+      
+      cacheYoneticim.saveMapToCache("orders.json", response["orders"]) ;
+    }
+  }
+
   @override
   void initState() {
     super.initState();
+    klasorleriAl();
+
     cartCubit = context.read<CartCubit>();
     clientCubit = context.read<ClientCubit>();
     productsCubit = context.read<ProductsCubit>();
@@ -139,6 +161,7 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
+            Text(temp),
             Padding(
               padding: const EdgeInsets.all(20.0),
               child: SizedBox(
@@ -293,7 +316,8 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                             Gap(3),
                             Text(
-                              AppLocalizations.of(context).getTranslate("Koltuk"),
+                              AppLocalizations.of(context)
+                                  .getTranslate("Koltuk"),
                               style: GoogleFonts.poppins(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 11,
@@ -324,7 +348,8 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                               Gap(3),
                               Text(
-                                  AppLocalizations.of(context).getTranslate("Sandalye"),
+                                AppLocalizations.of(context)
+                                    .getTranslate("Sandalye"),
                                 style: GoogleFonts.poppins(
                                     fontWeight: FontWeight.bold, fontSize: 11),
                               ),
@@ -354,7 +379,8 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                               Gap(3),
                               Text(
-                                  AppLocalizations.of(context).getTranslate("Masa"),
+                                AppLocalizations.of(context)
+                                    .getTranslate("Masa"),
                                 style: GoogleFonts.poppins(
                                     fontWeight: FontWeight.bold, fontSize: 11),
                               ),
@@ -384,7 +410,8 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                               Gap(3),
                               Text(
-                                AppLocalizations.of(context).getTranslate("Mutfak"),
+                                AppLocalizations.of(context)
+                                    .getTranslate("Mutfak"),
                                 style: GoogleFonts.poppins(
                                     fontWeight: FontWeight.bold, fontSize: 11),
                               ),
@@ -418,7 +445,8 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                               Gap(3),
                               Text(
-                                AppLocalizations.of(context).getTranslate("Işık"),
+                                AppLocalizations.of(context)
+                                    .getTranslate("Işık"),
                                 style: GoogleFonts.poppins(
                                     fontWeight: FontWeight.bold, fontSize: 11),
                               ),
@@ -448,7 +476,8 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                               Gap(3),
                               Text(
-                                AppLocalizations.of(context).getTranslate("Raflık"),
+                                AppLocalizations.of(context)
+                                    .getTranslate("Raflık"),
                                 style: GoogleFonts.poppins(
                                     fontWeight: FontWeight.bold, fontSize: 11),
                               ),
@@ -478,7 +507,8 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                               Gap(3),
                               Text(
-                                AppLocalizations.of(context).getTranslate("Vazo"),
+                                AppLocalizations.of(context)
+                                    .getTranslate("Vazo"),
                                 style: GoogleFonts.poppins(
                                     fontWeight: FontWeight.bold, fontSize: 11),
                               ),
@@ -508,7 +538,8 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                               Gap(3),
                               Text(
-                                AppLocalizations.of(context).getTranslate("Diğer"),
+                                AppLocalizations.of(context)
+                                    .getTranslate("Diğer"),
                                 style: GoogleFonts.poppins(
                                     fontWeight: FontWeight.bold, fontSize: 11),
                               ),
@@ -551,7 +582,6 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
-     
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           GoRouter.of(context).go('/chat');
@@ -566,59 +596,70 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-Widget homeProductCategories(HomeProductsModel model) {
-  return GridView.count( // GridView oluşturuyoruz
-    shrinkWrap: true, // Gridview'i içindeki elemanlar kadar sarmasını sağlar
-    crossAxisCount: 2, // Gridview'in kaç sütundan oluşacağını belirtir
-    childAspectRatio: 0.8, // Her bir elemanın boyutunu ayarlar
-    children: List.generate( // Ürün kartlarını oluşturmak için liste elemanlarını döngüyle gezerek ProductCard widget'ını üretir
-      model.products.length, // Ürün sayısı kadar döngü yapar
-      (index) {
-        return ProductCard( // Her bir ürün için ProductCard widget'ı oluşturur
-          functionOnTapFavorite: () { // Favoriye ekleme/çıkarma işlemi
-            Map<String, dynamic> productMap = { // Ürün bilgilerini bir haritada saklar
-              "id": model.products[index].id,
-              "name": model.products[index].name,
-              "photo": model.products[index].photo,
-              "icon": model.products[index].icon,
-              "price": model.products[index].price,
-              "puan": model.products[index].puan,
-              "tire": model.products[index].tire,
-              "sold": model.products[index].sold,
-              "descTitle": model.products[index].descTitle,
-              "descDetail": model.products[index].descDetail,
-              "colors": model.products[index].colors,
-              "isFavorite": model.products[index].isFavorite,
-            };
-            if (model.products[index].isFavorite == false) { // Eğer ürün favori değilse
-              model.products[index].isFavorite = true; // Ürünü favorilere ekle
-              productsCubit.addToFavorites(productMap); // Favorilere ekleme işlemini gerçekleştir
-            } else if (model.products[index].isFavorite == true) { // Eğer ürün favoride ise
-              model.products[index].isFavorite = false; // Ürünü favorilerden çıkar
-              productsCubit.removeFromFavorites(model.products[index].id); // Favorilerden çıkarma işlemini gerçekleştir
-            }
+  Widget homeProductCategories(HomeProductsModel model) {
+    return GridView.count(
+      // GridView oluşturuyoruz
+      shrinkWrap: true, // Gridview'i içindeki elemanlar kadar sarmasını sağlar
+      crossAxisCount: 2, // Gridview'in kaç sütundan oluşacağını belirtir
+      childAspectRatio: 0.8, // Her bir elemanın boyutunu ayarlar
+      children: List.generate(
+        // Ürün kartlarını oluşturmak için liste elemanlarını döngüyle gezerek ProductCard widget'ını üretir
+        model.products.length, // Ürün sayısı kadar döngü yapar
+        (index) {
+          return ProductCard(
+            // Her bir ürün için ProductCard widget'ı oluşturur
+            functionOnTapFavorite: () {
+              // Favoriye ekleme/çıkarma işlemi
+              Map<String, dynamic> productMap = {
+                // Ürün bilgilerini bir haritada saklar
+                "id": model.products[index].id,
+                "name": model.products[index].name,
+                "photo": model.products[index].photo,
+                "icon": model.products[index].icon,
+                "price": model.products[index].price,
+                "puan": model.products[index].puan,
+                "tire": model.products[index].tire,
+                "sold": model.products[index].sold,
+                "descTitle": model.products[index].descTitle,
+                "descDetail": model.products[index].descDetail,
+                "colors": model.products[index].colors,
+                "isFavorite": model.products[index].isFavorite,
+              };
+              if (model.products[index].isFavorite == false) {
+                // Eğer ürün favori değilse
+                model.products[index].isFavorite =
+                    true; // Ürünü favorilere ekle
+                productsCubit.addToFavorites(
+                    productMap); // Favorilere ekleme işlemini gerçekleştir
+              } else if (model.products[index].isFavorite == true) {
+                // Eğer ürün favoride ise
+                model.products[index].isFavorite =
+                    false; // Ürünü favorilerden çıkar
+                productsCubit.removeFromFavorites(model.products[index]
+                    .id); // Favorilerden çıkarma işlemini gerçekleştir
+              }
 
-            setState(() {}); // Değişikliklerin UI'ye yansıtılması için setState() çağırılır
-          },
-          product: model.products[index], // ProductCard'a gösterilecek ürün bilgileri verilir
-          onTap: () { // Ürün kartına tıklama işlemi
-            cartCubit.sepeteEkle( // Sepete ürün eklemek için cartCubit kullanılır
-              id: model.products[index].id,
-              ad: model.products[index].name,
-              sayi: 1,
-              fiyat: model.products[index].price,
-              gorsel: model.products[index].photo,
-            );
-          },
-        );
-      },
-    ),
-  );
-}
-
-
-
-
+              setState(
+                  () {}); // Değişikliklerin UI'ye yansıtılması için setState() çağırılır
+            },
+            product: model.products[
+                index], // ProductCard'a gösterilecek ürün bilgileri verilir
+            onTap: () {
+              // Ürün kartına tıklama işlemi
+              cartCubit.sepeteEkle(
+                // Sepete ürün eklemek için cartCubit kullanılır
+                id: model.products[index].id,
+                ad: model.products[index].name,
+                sayi: 1,
+                fiyat: model.products[index].price,
+                gorsel: model.products[index].photo,
+              );
+            },
+          );
+        },
+      ),
+    );
+  }
 
   Padding productsContainer(BuildContext context) {
     return Padding(
