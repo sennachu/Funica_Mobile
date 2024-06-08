@@ -17,7 +17,7 @@
 
 
     <application
-        android:label="funica_mobile"
+        android:label="Funica Mobile"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
